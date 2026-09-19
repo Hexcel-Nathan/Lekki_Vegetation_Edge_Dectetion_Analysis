@@ -1,0 +1,295 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+===============================================================================
+STEP 3 of 6 IN THE FULL PIPELINE - merge_segment_outputs.py
+===============================================================================
+PURPOSE: Stitches all 13 separately-processed segments (LEKKI01-13) back
+into ONE site-wide dataset - merged veglines, waterlines, transects, and
+BOTH transect-intersection pickles (vegetation-edge AND waterline) - so that
+Steps 4-6 (epoch_change_stats.py, waterline_change_stats.py,
+merge_transects_for_mapping.py) can be run once against a single merged
+"LEKKI" site instead of 13 separate ones.
+
+Run this AFTER Step 2 has been completed for every one of LEKKI01-13.
+
+THIS IS THE CORE, FINAL VERSION - reverted from an in-progress further
+eastward-extension attempt (which would have added LEKKI14-19) back to the
+validated, submitted 13-segment corridor (~69.46 km). If you ever pick that
+further extension back up, re-add LEKKI14-19 to ANALYSIS_SEGMENT_SITES/
+ALL_SEGMENT_SITES below and rename MERGED_SITE so you don't overwrite this
+corridor's output.
+
+Three things need care when merging (all handled below):
+  1. The 250 m overlap zones between neighbouring segments mean both
+     segments detected a vegetation edge / waterline / cast transects over
+     the SAME stretch of coast. We keep only the copy from whichever
+     segment's "core" (non-overlap) territory that stretch belongs to.
+  2. TransectID in each segment starts again at 0. We renumber TransectID
+     sequentially along the whole corridor in the merged output, ordered
+     by TRUE distance along the master reference line (not by segment
+     index - segments aren't necessarily equal length).
+  3. The veg and water pickles share the same local TransectID numbering
+     per segment, but their intersection points sit at different places
+     along each transect. Reusing the SAME keep-mask/renumbering computed
+     from the veg file for both keeps the two merged outputs row-aligned
+     by TransectID - this is verified by an explicit assertion below, not
+     assumed.
+
+Run with: (coastguard) $ python merge_segment_outputs.py
+"""
+
+# ----------------------------------------------------------------------
+# CHUNK 1: Imports
+# ----------------------------------------------------------------------
+import os
+import glob
+import pickle
+import numpy as np
+import pandas as pd
+import geopandas as gpd
+
+
+# ----------------------------------------------------------------------
+# CHUNK 2: EDIT ME - settings (must match split_refline_into_segments.py)
+# ----------------------------------------------------------------------
+SITE_PREFIX = "LEKKI"
+N_SEGMENTS = 13   # the validated, submitted corridor: LEKKI01-13 (~69.46 km) -
+                  # 9 original + 2 west (LEKKI01-02) + 2 Dangote-facing east
+                  # (LEKKI12-13). NOTE: an earlier version of this script
+                  # incorrectly reverted to an 11-segment/old-numbering scope
+                  # that dropped the 2 west segments entirely - if you have
+                  # that version, replace it with this one.
+
+# ALL_SEGMENT_SITES: every segment, used only for the veglines/waterlines/
+# raw-transects merge - these are just raw per-date detections, useful for
+# a full-coastline map/figure. Including LEKKI01-04 here (2 untested west
+# segments plus 2 known-poor-quality segments) lets you SHOW the excluded
+# stretch on a map rather than making it look like it was never surveyed -
+# honest disclosure, not silent omission.
+#
+# ANALYSIS_SEGMENT_SITES: only the segments whose data quality was
+# verified good enough to trust for actual measurements. Everything that
+# produces a NUMBER (transects, transect-intersections, and therefore
+# every downstream rate/CVI calculation) uses ONLY this list. LEKKI01-04
+# are excluded here (see the Chapter 3 disclosure of why each pair was
+# excluded).
+ALL_SEGMENT_SITES = [f"{SITE_PREFIX}{i:02d}" for i in range(1, N_SEGMENTS + 1)]
+ANALYSIS_SEGMENT_SITES = [f"{SITE_PREFIX}{i:02d}" for i in range(5, N_SEGMENTS + 1)]
+
+# Kept for backwards compatibility with the rest of this script - always
+# refers to the ANALYSIS list, since that's what every function below
+# actually computes rates/intersections from.
+SEGMENT_SITES = ANALYSIS_SEGMENT_SITES
+
+MERGED_SITE = "LEKKI"   # the combined site used from Step 4 onward
+DATA_ROOT = "Data"
+SEGMENT_SUMMARY_CSV = os.path.join(DATA_ROOT, "refline_segments_summary.csv")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 3: Merge veglines / waterlines / raw transects shapefiles
+# ----------------------------------------------------------------------
+# These are just points-in-time detections - concatenating them is safe
+# even in overlap zones, because each row is one date/satellite pass, not
+# a per-transect statistic. (Any near-duplicate detection right at a
+# segment boundary has a negligible effect on a map and is smoothed out
+# anyway once transects are cast in Chunk 5 below.)
+def merge_line_shapefiles(pattern, out_path, sites=None):
+    if sites is None:
+        sites = SEGMENT_SITES
+    frames = []
+    for site in sites:
+        matches = glob.glob(os.path.join(DATA_ROOT, site, "lines", pattern))
+        if not matches:
+            print(f"  WARNING: no file matching {pattern} found for {site} - skipping")
+            continue
+        gdf = gpd.read_file(matches[0])
+        gdf["segment"] = site
+        frames.append(gdf)
+
+    if not frames:
+        raise FileNotFoundError(f"No segment files found for pattern {pattern}")
+
+    merged = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), crs=frames[0].crs)
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
+    merged.to_file(out_path)
+    print(f"  Merged {len(frames)} segments -> {out_path} ({len(merged)} rows)")
+    return merged
+
+
+# ----------------------------------------------------------------------
+# CHUNK 4: Load the segment boundary summary written by Step 1
+# ----------------------------------------------------------------------
+# This tells us, for each segment, the "core" (non-overlap) start/end
+# distance along the master line - the range of coastline that segment is
+# uniquely responsible for.
+def load_segment_bounds():
+    summary = pd.read_csv(SEGMENT_SUMMARY_CSV)
+    return summary.set_index("sitename")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 4b: Load the ORIGINAL, unsplit master reference line, so we can
+#           measure each transect's TRUE distance along the coast rather
+#           than approximating it from its index position.
+# ----------------------------------------------------------------------
+# IMPORTANT: keep this at a path OUTSIDE Data/referenceLines/ - that
+# shared path gets overwritten by any "activate segment" workflow every
+# time a different segment is made active, which destroyed this file
+# twice earlier in the project before it was moved here.
+MASTER_REFLINE_SHP = "Data/LEKKI_MASTER_REFLINE_PROTECTED.shp"
+PROJECTED_EPSG = 32631  # UTM 31N - same zone used when splitting
+
+
+def load_master_line_projected():
+    from shapely.ops import linemerge
+    gdf = gpd.read_file(MASTER_REFLINE_SHP)
+    union_geom = gdf.geometry.union_all()
+    line = union_geom if union_geom.geom_type == "LineString" else linemerge(union_geom)
+    return gpd.GeoSeries([line], crs=gdf.crs).to_crs(f"EPSG:{PROJECTED_EPSG}").iloc[0]
+
+
+# ----------------------------------------------------------------------
+# CHUNK 5: Merge transects + intersections, dropping overlap duplicates,
+#          renumbering TransectID sequentially along the coast, and
+#          merging the matching waterline intersections using the SAME
+#          keep-mask/renumbering as the veg file.
+# ----------------------------------------------------------------------
+def merge_transects_and_intersections(segment_bounds):
+    master_line = load_master_line_projected()
+    all_transect_inter = []
+    all_water_inter = []
+    missing_water = []
+
+    for site in ANALYSIS_SEGMENT_SITES:
+        inter_path = os.path.join(DATA_ROOT, site, "intersections", f"{site}_transect_intersects.pkl")
+        water_path = os.path.join(DATA_ROOT, site, "intersections", f"{site}_transect_water_intersects.pkl")
+
+        if not os.path.isfile(inter_path):
+            print(f"  WARNING: {inter_path} not found - skipping {site}")
+            continue
+
+        with open(inter_path, "rb") as f:
+            seg_gdf = pickle.load(f)
+
+        seg_gdf_proj = seg_gdf.to_crs(f"EPSG:{PROJECTED_EPSG}")
+        true_dist_m = seg_gdf_proj.geometry.centroid.apply(master_line.project)
+
+        bounds = segment_bounds.loc[site]
+        core_start_m = bounds["core_start_km"] * 1000
+        core_end_m = bounds["core_end_km"] * 1000
+        keep_mask = (true_dist_m >= core_start_m) & (true_dist_m <= core_end_m)
+
+        n_local = len(seg_gdf)
+        kept = seg_gdf.loc[keep_mask].copy()
+        kept["source_segment"] = site
+        kept["local_TransectID"] = kept["TransectID"].values
+        all_transect_inter.append(kept)
+        print(f"  {site}: kept {keep_mask.sum()}/{n_local} transects "
+              f"(dropped {n_local - keep_mask.sum()} in overlap zones, using true coordinates)")
+
+        if not os.path.isfile(water_path):
+            print(f"  WARNING: {water_path} not found - skipping water merge for {site}")
+            missing_water.append(site)
+            continue
+
+        with open(water_path, "rb") as f:
+            seg_water_gdf = pickle.load(f)
+
+        if len(seg_water_gdf) != n_local:
+            print(f"  WARNING: {site} veg ({n_local}) and water ({len(seg_water_gdf)}) "
+                  f"transect counts differ - aligning on TransectID instead of position")
+            seg_water_gdf = seg_water_gdf.set_index("TransectID").loc[seg_gdf["TransectID"].values].reset_index()
+
+        kept_water = seg_water_gdf.loc[keep_mask].copy()
+        kept_water["source_segment"] = site
+        kept_water["local_TransectID"] = kept_water["TransectID"].values
+        all_water_inter.append(kept_water)
+
+    if missing_water:
+        print(f"\n  NOTE: no water intersections merged for: {', '.join(missing_water)}. "
+              "Re-run Step 2 for these segments with settings['wetdry']=True to produce "
+              "their *_transect_water_intersects.pkl before Step 5.\n")
+
+    merged = pd.concat(all_transect_inter, ignore_index=True)
+    if hasattr(all_transect_inter[0], "crs"):
+        merged = gpd.GeoDataFrame(merged, crs=all_transect_inter[0].crs)
+    merged["TransectID"] = range(len(merged))   # global renumbering - full rebuild every run
+
+    merged_water = None
+    if all_water_inter:
+        merged_water = pd.concat(all_water_inter, ignore_index=True)
+        if hasattr(all_water_inter[0], "crs"):
+            merged_water = gpd.GeoDataFrame(merged_water, crs=all_water_inter[0].crs)
+
+        # Sanity check: veg and water merges must have walked the same
+        # (segment, local_TransectID) pairs in the same order before we
+        # apply the shared renumbering below.
+        if len(merged_water) != len(merged) or not (
+            merged_water[["source_segment", "local_TransectID"]].reset_index(drop=True)
+            .equals(merged[["source_segment", "local_TransectID"]].reset_index(drop=True))
+        ):
+            raise RuntimeError(
+                "Veg and water transect merges are out of alignment - check that every "
+                "segment's water pickle has the same TransectID range as its veg pickle."
+            )
+        merged_water["TransectID"] = merged["TransectID"].values
+
+    return merged, merged_water
+
+
+# ----------------------------------------------------------------------
+# CHUNK 6: Main - run the merge and save outputs Step 4 onward uses
+# ----------------------------------------------------------------------
+if __name__ == "__main__":
+    print(f"Merging vegetation-edge lines (all {len(ALL_SEGMENT_SITES)} segments, "
+          f"including excluded ones, for full-coastline maps/figures) ...")
+    merge_line_shapefiles("*veglines.shp",
+                          os.path.join(DATA_ROOT, MERGED_SITE, "lines", f"{MERGED_SITE}_veglines.shp"),
+                          sites=ALL_SEGMENT_SITES)
+
+    print(f"Merging waterlines (all {len(ALL_SEGMENT_SITES)} segments) ...")
+    merge_line_shapefiles("*waterlines.shp",
+                          os.path.join(DATA_ROOT, MERGED_SITE, "lines", f"{MERGED_SITE}_waterlines.shp"),
+                          sites=ALL_SEGMENT_SITES)
+
+    print(f"Merging Transects (all {len(ALL_SEGMENT_SITES)} segments, map/figure use only) ...")
+    merge_line_shapefiles("*Transects.shp",
+                          os.path.join(DATA_ROOT, MERGED_SITE, "lines", f"{MERGED_SITE}_Transects.shp"),
+                          sites=ALL_SEGMENT_SITES)
+    print("  NOTE: this file includes LEKKI01/02 for map/figure purposes only. Every row "
+          "still carries its 'segment' column - symbolise LEKKI01/02 differently (hatch/"
+          "dashed style) in any figure to show they were excluded from the quantitative "
+          "analysis, not silently omitted. This file has LOCAL (per-segment) TransectID "
+          "numbering, NOT the global numbering used everywhere else - see Step 6's note.\n")
+
+    print("Loading segment boundary summary ...")
+    segment_bounds = load_segment_bounds()
+
+    print(f"Merging transects, transect-intersections and waterline-intersections "
+          f"(ANALYSIS segments only: {ANALYSIS_SEGMENT_SITES}) ...")
+    merged_transects, merged_water_transects = merge_transects_and_intersections(segment_bounds)
+
+    out_dir = os.path.join(DATA_ROOT, MERGED_SITE, "intersections")
+    os.makedirs(out_dir, exist_ok=True)
+
+    out_pkl = os.path.join(out_dir, f"{MERGED_SITE}_transect_intersects.pkl")
+    with open(out_pkl, "wb") as f:
+        pickle.dump(merged_transects, f)
+    print(f"\nSaved merged transect-intersections -> {out_pkl}")
+    print(f"Total merged transects: {len(merged_transects)}")
+
+    if merged_water_transects is not None:
+        out_water_pkl = os.path.join(out_dir, f"{MERGED_SITE}_transect_water_intersects.pkl")
+        with open(out_water_pkl, "wb") as f:
+            pickle.dump(merged_water_transects, f)
+        print(f"Saved merged waterline transect-intersections -> {out_water_pkl}")
+        print(f"Total merged waterline transects: {len(merged_water_transects)}")
+    else:
+        print(f"\nNo waterline transect-intersection pickles were found for ANY segment - "
+              f"{MERGED_SITE}_transect_water_intersects.pkl was NOT created. Step 5 needs "
+              "this file - re-run Step 2 per segment with settings['wetdry']=True first.")
+
+    print(f"\nYou can now continue to Step 4 (epoch_change_stats.py) and Step 5 "
+          f"(waterline_change_stats.py) using sitename = '{MERGED_SITE}'.")
