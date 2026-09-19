@@ -1,0 +1,857 @@
+TransectID,veg_type,rate_m_yr,group
+0,Built-up,-1.1090126913061913,Built-up
+1,Built-up,-0.7495542908962094,Built-up
+2,Degraded Vegetation,-0.9881881988137248,Degraded Vegetation
+3,Built-up,-0.4263092991270411,Built-up
+4,Degraded Vegetation,-0.8614046371863708,Degraded Vegetation
+5,Degraded Vegetation,-0.5558041624709661,Degraded Vegetation
+6,Degraded Vegetation,-0.8625764125511703,Degraded Vegetation
+7,Degraded Vegetation,-0.7774449392709162,Degraded Vegetation
+8,Degraded Vegetation,-0.8903955301171047,Degraded Vegetation
+10,Healthy Vegetation,-0.3085967881615337,Healthy Vegetation
+11,Degraded Vegetation,-0.6698711024792876,Degraded Vegetation
+12,Healthy Vegetation,-0.3883890192380999,Healthy Vegetation
+13,Healthy Vegetation,-0.5858020129475681,Healthy Vegetation
+14,Healthy Vegetation,-0.7771992949214822,Healthy Vegetation
+15,Degraded Vegetation,-1.0789952235795852,Degraded Vegetation
+16,Degraded Vegetation,-1.987322805663292,Degraded Vegetation
+17,Degraded Vegetation,-1.305771960209597,Degraded Vegetation
+18,Degraded Vegetation,-0.3175863683200791,Degraded Vegetation
+19,Degraded Vegetation,-0.3003183150197385,Degraded Vegetation
+20,Degraded Vegetation,-0.6925602898697882,Degraded Vegetation
+21,Degraded Vegetation,-0.7844380844295962,Degraded Vegetation
+22,Degraded Vegetation,-0.7475771443154969,Degraded Vegetation
+23,Degraded Vegetation,-0.3458420102682094,Degraded Vegetation
+24,Healthy Vegetation,-0.6590047745661793,Healthy Vegetation
+25,Healthy Vegetation,-0.4152543251881571,Healthy Vegetation
+26,Degraded Vegetation,-0.5848740516163529,Degraded Vegetation
+27,Degraded Vegetation,-0.6658281969305102,Degraded Vegetation
+28,Degraded Vegetation,-0.941794622925494,Degraded Vegetation
+29,Degraded Vegetation,-0.6171672414623561,Degraded Vegetation
+30,Degraded Vegetation,-0.9342842000659513,Degraded Vegetation
+31,Degraded Vegetation,-1.2078654193127076,Degraded Vegetation
+32,Degraded Vegetation,-0.9936967121131012,Degraded Vegetation
+33,Degraded Vegetation,-1.3574350091338372,Degraded Vegetation
+34,Healthy Vegetation,-0.914861467284799,Healthy Vegetation
+35,Healthy Vegetation,-0.2871654739047717,Healthy Vegetation
+36,Healthy Vegetation,-0.6519010791573223,Healthy Vegetation
+37,Healthy Vegetation,-0.8022659341441328,Healthy Vegetation
+38,Degraded Vegetation,-1.0785137390208464,Degraded Vegetation
+39,Degraded Vegetation,-0.5604654354896094,Degraded Vegetation
+40,Degraded Vegetation,-0.787867111672606,Degraded Vegetation
+41,Degraded Vegetation,-0.85396792422966,Degraded Vegetation
+42,Degraded Vegetation,-0.5140114543895684,Degraded Vegetation
+43,Degraded Vegetation,-0.4223719517735008,Degraded Vegetation
+46,Degraded Vegetation,-0.945947000909278,Degraded Vegetation
+47,Degraded Vegetation,-0.8603382634265326,Degraded Vegetation
+48,Degraded Vegetation,-1.2174457615271903,Degraded Vegetation
+49,Degraded Vegetation,-1.0621459883485982,Degraded Vegetation
+50,Degraded Vegetation,-0.7774561417410436,Degraded Vegetation
+51,Degraded Vegetation,-0.7709679736172598,Degraded Vegetation
+52,Degraded Vegetation,-0.7025449919403358,Degraded Vegetation
+53,Degraded Vegetation,-1.0397653437083003,Degraded Vegetation
+54,Degraded Vegetation,-1.4525366825300006,Degraded Vegetation
+55,Degraded Vegetation,-1.5991864337897317,Degraded Vegetation
+56,Degraded Vegetation,-1.1007961546301646,Degraded Vegetation
+57,Degraded Vegetation,-0.4005674100738601,Degraded Vegetation
+58,Degraded Vegetation,-0.1520316907310981,Degraded Vegetation
+59,Degraded Vegetation,-0.5045796418125078,Degraded Vegetation
+60,Degraded Vegetation,-0.4948482480347843,Degraded Vegetation
+61,Degraded Vegetation,-0.366788982149685,Degraded Vegetation
+62,Degraded Vegetation,-0.0219859789426923,Degraded Vegetation
+63,Degraded Vegetation,-0.424751638170776,Degraded Vegetation
+64,Degraded Vegetation,-0.4457605616498886,Degraded Vegetation
+65,Degraded Vegetation,-0.051677924623202,Degraded Vegetation
+66,Degraded Vegetation,-0.7883157670128742,Degraded Vegetation
+67,Degraded Vegetation,-0.723684787993749,Degraded Vegetation
+68,Degraded Vegetation,-0.2785796594332743,Degraded Vegetation
+69,Built-up,-1.218375763120926,Built-up
+70,Built-up,-1.2190382837570783,Built-up
+71,Built-up,-1.2801780024741474,Built-up
+72,Degraded Vegetation,-1.1998662846027492,Degraded Vegetation
+73,Degraded Vegetation,-1.7151420722849622,Degraded Vegetation
+74,Built-up,-0.8807918733971881,Built-up
+75,Degraded Vegetation,-0.7172596650864836,Degraded Vegetation
+76,Built-up,-1.5925677446984867,Built-up
+78,Built-up,-1.075212945397173,Built-up
+79,Built-up,-0.4942255652097944,Built-up
+80,Built-up,-0.5758884358339673,Built-up
+81,Built-up,-2.719814433147994,Built-up
+82,Built-up,-2.6843186861558537,Built-up
+83,Built-up,-1.8544947281071968,Built-up
+84,Degraded Vegetation,-1.73487056848698,Degraded Vegetation
+85,Degraded Vegetation,-0.6139007135030615,Degraded Vegetation
+86,Degraded Vegetation,-0.7671933804943524,Degraded Vegetation
+87,Degraded Vegetation,-1.0289697969607452,Degraded Vegetation
+88,Degraded Vegetation,-0.6805459870329562,Degraded Vegetation
+90,Built-up,-0.91596017328654,Built-up
+91,Degraded Vegetation,-0.0661140552926916,Degraded Vegetation
+92,Built-up,-0.5515653533669278,Built-up
+93,Built-up,-0.2467714828932547,Built-up
+94,Built-up,-0.3167445552678534,Built-up
+95,Built-up,-0.4907080193695665,Built-up
+96,Built-up,-0.6537101750206233,Built-up
+97,Built-up,-0.094563209644557,Built-up
+98,Built-up,-0.5987258293665527,Built-up
+99,Built-up,0.3020618993569286,Built-up
+100,Built-up,-1.7412576952022991,Built-up
+101,Built-up,-1.4273717572742797,Built-up
+103,Built-up,-3.1997584473211167,Built-up
+104,Built-up,-0.019030900244728,Built-up
+105,Built-up,-0.2720059185458819,Built-up
+107,Degraded Vegetation,-0.307724339794545,Degraded Vegetation
+108,Degraded Vegetation,-0.1764287511211742,Degraded Vegetation
+109,Degraded Vegetation,0.1127220985996872,Degraded Vegetation
+110,Degraded Vegetation,-0.049194750935145,Degraded Vegetation
+111,Degraded Vegetation,-0.3589176665685785,Degraded Vegetation
+112,Degraded Vegetation,-0.4481023446157378,Degraded Vegetation
+114,Healthy Vegetation,-0.3541139627809265,Healthy Vegetation
+116,Degraded Vegetation,0.0386744839513327,Degraded Vegetation
+117,Built-up,-0.3637774075433098,Built-up
+118,Built-up,-0.193530465315196,Built-up
+119,Degraded Vegetation,-0.4297133479842013,Degraded Vegetation
+120,Degraded Vegetation,-0.5726555222749942,Degraded Vegetation
+121,Built-up,-0.5531240095488212,Built-up
+122,Degraded Vegetation,-0.5714479666705656,Degraded Vegetation
+123,Built-up,-0.568426527031415,Built-up
+124,Degraded Vegetation,-0.2960484504944582,Degraded Vegetation
+125,Degraded Vegetation,-0.5913897609502641,Degraded Vegetation
+126,Degraded Vegetation,-0.6301021420587518,Degraded Vegetation
+127,Degraded Vegetation,-0.470882254902428,Degraded Vegetation
+128,Built-up,-1.249830006815941,Built-up
+130,Built-up,-3.1479915312462063,Built-up
+131,Built-up,-0.5504626858726946,Built-up
+132,Built-up,-0.1687848392164395,Built-up
+133,Built-up,-0.4435887487033592,Built-up
+134,Degraded Vegetation,-0.3648646134487339,Degraded Vegetation
+135,Degraded Vegetation,-0.452528835775915,Degraded Vegetation
+136,Degraded Vegetation,-0.5523724390051332,Degraded Vegetation
+137,Degraded Vegetation,-0.4459275612837177,Degraded Vegetation
+138,Degraded Vegetation,-0.6538407899413,Degraded Vegetation
+139,Built-up,-0.3856004690759084,Built-up
+140,Built-up,-0.2174091217927125,Built-up
+141,Degraded Vegetation,-0.1820036616670896,Degraded Vegetation
+142,Degraded Vegetation,-0.1834210073870058,Degraded Vegetation
+144,Built-up,-0.6730400851636187,Built-up
+145,Built-up,-0.974023618333514,Built-up
+146,Built-up,-0.6099700832805613,Built-up
+147,Healthy Vegetation,-0.568754110889109,Healthy Vegetation
+148,Healthy Vegetation,-0.4744980526041239,Healthy Vegetation
+149,Degraded Vegetation,-0.589890569660495,Degraded Vegetation
+150,Healthy Vegetation,-0.3671899107852812,Healthy Vegetation
+151,Healthy Vegetation,-0.6883906525476395,Healthy Vegetation
+152,Healthy Vegetation,-1.252620873530332,Healthy Vegetation
+153,Healthy Vegetation,-1.5540192340774586,Healthy Vegetation
+154,Degraded Vegetation,-1.6997766900259943,Degraded Vegetation
+155,Healthy Vegetation,-1.4387330464872072,Healthy Vegetation
+156,Healthy Vegetation,-1.547252788362862,Healthy Vegetation
+157,Healthy Vegetation,-1.3382558774457318,Healthy Vegetation
+158,Healthy Vegetation,-1.2667428426133132,Healthy Vegetation
+159,Degraded Vegetation,-1.056033080179262,Degraded Vegetation
+160,Degraded Vegetation,-1.2604520705182876,Degraded Vegetation
+161,Built-up,-1.1936108741954157,Built-up
+162,Built-up,-1.3606830181694638,Built-up
+163,Built-up,-0.9935172425984432,Built-up
+164,Built-up,-0.8424705809340534,Built-up
+165,Built-up,-0.7794692904028371,Built-up
+166,Built-up,-1.1102607654824677,Built-up
+167,Degraded Vegetation,-1.37659867557311,Degraded Vegetation
+168,Degraded Vegetation,-1.1996955506302942,Degraded Vegetation
+169,Degraded Vegetation,-0.615072675974959,Degraded Vegetation
+170,Degraded Vegetation,-1.0527922924465385,Degraded Vegetation
+171,Degraded Vegetation,-0.8609570229169569,Degraded Vegetation
+172,Degraded Vegetation,-1.3159782355100182,Degraded Vegetation
+173,Built-up,-1.3493160232485066,Built-up
+175,Built-up,-1.3606230452214134,Built-up
+177,Built-up,-1.036518649841439,Built-up
+178,Built-up,-0.9200876069285008,Built-up
+179,Degraded Vegetation,-1.199419372249645,Degraded Vegetation
+180,Degraded Vegetation,-1.0151588114668195,Degraded Vegetation
+181,Degraded Vegetation,-1.1275941366879887,Degraded Vegetation
+182,Degraded Vegetation,-1.0970192472426912,Degraded Vegetation
+183,Degraded Vegetation,-1.2212976790270245,Degraded Vegetation
+184,Degraded Vegetation,-1.251068630767734,Degraded Vegetation
+185,Degraded Vegetation,-1.1811492124410898,Degraded Vegetation
+186,Degraded Vegetation,-1.3091122212251474,Degraded Vegetation
+187,Degraded Vegetation,-1.3721046483405182,Degraded Vegetation
+188,Degraded Vegetation,-1.3155587731108913,Degraded Vegetation
+189,Built-up,-1.416943897531901,Built-up
+190,Built-up,-1.6344811143461466,Built-up
+191,Built-up,-1.8040687483275533,Built-up
+193,Built-up,-1.304466703275979,Built-up
+194,Built-up,-5.05741142533616,Built-up
+195,Degraded Vegetation,-0.812276604601562,Degraded Vegetation
+196,Degraded Vegetation,-0.7997722964629159,Degraded Vegetation
+197,Degraded Vegetation,-0.8641699152198374,Degraded Vegetation
+198,Built-up,-1.2567057816002225,Built-up
+199,Degraded Vegetation,-0.7378371218629298,Degraded Vegetation
+200,Built-up,-1.1678758041252024,Built-up
+201,Built-up,-0.8851558447279438,Built-up
+202,Built-up,-0.883654100969012,Built-up
+203,Built-up,-0.7442755756316262,Built-up
+204,Built-up,-1.1975633879949366,Built-up
+205,Degraded Vegetation,-1.0073254686429332,Degraded Vegetation
+206,Degraded Vegetation,-0.1116543381818218,Degraded Vegetation
+207,Degraded Vegetation,-0.1499134619380023,Degraded Vegetation
+208,Degraded Vegetation,-0.0645797570962996,Degraded Vegetation
+209,Degraded Vegetation,0.0241885634387626,Degraded Vegetation
+210,Degraded Vegetation,0.1467959691745321,Degraded Vegetation
+211,Degraded Vegetation,0.1755757608205974,Degraded Vegetation
+212,Degraded Vegetation,-0.0838035006691167,Degraded Vegetation
+213,Degraded Vegetation,0.0437136859435117,Degraded Vegetation
+214,Degraded Vegetation,0.0205122132597072,Degraded Vegetation
+215,Degraded Vegetation,-0.1599489267946277,Degraded Vegetation
+216,Degraded Vegetation,0.0380793387358395,Degraded Vegetation
+217,Built-up,0.3080500856453534,Built-up
+218,Degraded Vegetation,-0.2454467873381665,Degraded Vegetation
+219,Degraded Vegetation,-0.0243541542774243,Degraded Vegetation
+220,Healthy Vegetation,-0.2031989827252446,Healthy Vegetation
+221,Healthy Vegetation,0.3430828206552112,Healthy Vegetation
+222,Degraded Vegetation,0.4575555398832112,Degraded Vegetation
+223,Healthy Vegetation,0.3557542897400451,Healthy Vegetation
+224,Degraded Vegetation,0.5427747046594936,Degraded Vegetation
+225,Healthy Vegetation,-1.2386887626010088,Healthy Vegetation
+226,Built-up,-0.4293630878971439,Built-up
+227,Built-up,-0.553193152266997,Built-up
+228,Built-up,0.015839722807852,Built-up
+229,Built-up,-0.502581176620571,Built-up
+230,Degraded Vegetation,-0.5881645486982805,Degraded Vegetation
+231,Degraded Vegetation,-0.7202435327663799,Degraded Vegetation
+232,Degraded Vegetation,-0.4433217324691753,Degraded Vegetation
+233,Degraded Vegetation,-0.3796082341946857,Degraded Vegetation
+234,Degraded Vegetation,-0.0296139073673129,Degraded Vegetation
+235,Degraded Vegetation,-0.2216848400649618,Degraded Vegetation
+236,Degraded Vegetation,-0.1348431649294105,Degraded Vegetation
+237,Built-up,-0.1777192388762619,Built-up
+238,Degraded Vegetation,-0.239086812439442,Degraded Vegetation
+239,Degraded Vegetation,-0.1187465017616831,Degraded Vegetation
+240,Degraded Vegetation,-0.1173219966657772,Degraded Vegetation
+241,Healthy Vegetation,-0.0978123662140313,Healthy Vegetation
+242,Degraded Vegetation,0.0094690629314785,Degraded Vegetation
+243,Degraded Vegetation,0.0175193324427898,Degraded Vegetation
+244,Degraded Vegetation,0.4263912671792679,Degraded Vegetation
+245,Degraded Vegetation,0.0419856339423541,Degraded Vegetation
+246,Degraded Vegetation,0.2916235666435767,Degraded Vegetation
+247,Degraded Vegetation,-0.1878002579660089,Degraded Vegetation
+248,Degraded Vegetation,-0.2292045075603718,Degraded Vegetation
+249,Degraded Vegetation,-0.3328959788849016,Degraded Vegetation
+250,Degraded Vegetation,0.0032374889826138,Degraded Vegetation
+251,Degraded Vegetation,-0.025571895025462,Degraded Vegetation
+252,Degraded Vegetation,-0.2641804761399682,Degraded Vegetation
+253,Degraded Vegetation,0.2182014637438825,Degraded Vegetation
+254,Degraded Vegetation,0.3738536306688416,Degraded Vegetation
+255,Degraded Vegetation,0.5136581277392331,Degraded Vegetation
+256,Degraded Vegetation,0.1357803682877207,Degraded Vegetation
+257,Healthy Vegetation,0.0919814768053638,Healthy Vegetation
+258,Degraded Vegetation,-0.4224191603379046,Degraded Vegetation
+259,Degraded Vegetation,-0.4675041724929574,Degraded Vegetation
+260,Healthy Vegetation,0.294338483304961,Healthy Vegetation
+261,Degraded Vegetation,0.680695037200183,Degraded Vegetation
+262,Degraded Vegetation,-0.5740108957610255,Degraded Vegetation
+263,Degraded Vegetation,0.3777663537283701,Degraded Vegetation
+264,Degraded Vegetation,-0.6805014709178161,Degraded Vegetation
+265,Degraded Vegetation,-0.1611306647967501,Degraded Vegetation
+266,Degraded Vegetation,-0.5120465523633473,Degraded Vegetation
+267,Degraded Vegetation,0.0853405032906938,Degraded Vegetation
+268,Degraded Vegetation,-0.0788334713682329,Degraded Vegetation
+269,Degraded Vegetation,-0.4217530458050528,Degraded Vegetation
+270,Healthy Vegetation,-0.0725818786121671,Healthy Vegetation
+271,Healthy Vegetation,-0.1127348150284544,Healthy Vegetation
+272,Healthy Vegetation,0.0032859755835428,Healthy Vegetation
+273,Healthy Vegetation,0.333887180463255,Healthy Vegetation
+274,Healthy Vegetation,0.317553133501682,Healthy Vegetation
+275,Healthy Vegetation,-0.1273629758054009,Healthy Vegetation
+276,Healthy Vegetation,-0.364694335864518,Healthy Vegetation
+277,Degraded Vegetation,0.1123127648834996,Degraded Vegetation
+278,Degraded Vegetation,-0.6066791406654399,Degraded Vegetation
+279,Healthy Vegetation,-0.2907603127087623,Healthy Vegetation
+280,Degraded Vegetation,-0.0791440817702061,Degraded Vegetation
+281,Degraded Vegetation,0.140199791991446,Degraded Vegetation
+282,Degraded Vegetation,-0.3835211131980293,Degraded Vegetation
+283,Degraded Vegetation,-0.2447020453028825,Degraded Vegetation
+284,Degraded Vegetation,0.3458459115512714,Degraded Vegetation
+285,Degraded Vegetation,0.2869834722377574,Degraded Vegetation
+286,Degraded Vegetation,-0.7119456016528584,Degraded Vegetation
+287,Built-up,0.2803269398562531,Built-up
+288,Degraded Vegetation,-5.241056947192558,Degraded Vegetation
+290,Degraded Vegetation,-0.2480720027208529,Degraded Vegetation
+291,Degraded Vegetation,0.2196783847688473,Degraded Vegetation
+293,Degraded Vegetation,-0.0070558208200939,Degraded Vegetation
+294,Degraded Vegetation,-0.1940389375426507,Degraded Vegetation
+295,Degraded Vegetation,-0.4202478557036148,Degraded Vegetation
+296,Healthy Vegetation,-0.3383981949612083,Healthy Vegetation
+297,Degraded Vegetation,-0.9138199917128974,Degraded Vegetation
+298,Built-up,-0.9613046635510846,Built-up
+300,Degraded Vegetation,-0.3861013593057514,Degraded Vegetation
+301,Built-up,-0.3367226662025029,Built-up
+302,Built-up,-0.3936300501827605,Built-up
+303,Built-up,-0.4526431388989511,Built-up
+304,Built-up,-1.7492607772522497,Built-up
+305,Built-up,-1.8107348258255955,Built-up
+306,Built-up,-3.972222991450978,Built-up
+307,Built-up,-1.0939906342484098,Built-up
+308,Built-up,-1.1570295946587414,Built-up
+309,Degraded Vegetation,-0.3908159678047805,Degraded Vegetation
+310,Degraded Vegetation,-0.7712753523450752,Degraded Vegetation
+311,Degraded Vegetation,-0.9553515423488146,Degraded Vegetation
+312,Degraded Vegetation,-0.4476054041622084,Degraded Vegetation
+313,Degraded Vegetation,-0.5754739545410636,Degraded Vegetation
+314,Degraded Vegetation,-0.8896696003952937,Degraded Vegetation
+315,Degraded Vegetation,-0.8998990078279194,Degraded Vegetation
+316,Degraded Vegetation,-0.6798382461476218,Degraded Vegetation
+317,Degraded Vegetation,-0.830802348804996,Degraded Vegetation
+318,Degraded Vegetation,-1.2898931758768055,Degraded Vegetation
+319,Degraded Vegetation,-1.2567296547507445,Degraded Vegetation
+320,Degraded Vegetation,-0.775851887657727,Degraded Vegetation
+321,Degraded Vegetation,-0.5378686077612518,Degraded Vegetation
+322,Degraded Vegetation,-0.4169840707395146,Degraded Vegetation
+323,Healthy Vegetation,-0.1085934488534012,Healthy Vegetation
+324,Built-up,-0.3842359908765457,Built-up
+325,Degraded Vegetation,-0.3546718152729352,Degraded Vegetation
+326,Healthy Vegetation,-0.2161938725430155,Healthy Vegetation
+327,Degraded Vegetation,-0.0458118992621702,Degraded Vegetation
+328,Healthy Vegetation,-0.4463029259020297,Healthy Vegetation
+329,Degraded Vegetation,-0.0117871178404891,Degraded Vegetation
+330,Degraded Vegetation,0.4568373194158132,Degraded Vegetation
+331,Degraded Vegetation,-0.018554704402578,Degraded Vegetation
+332,Degraded Vegetation,0.0360417916279371,Degraded Vegetation
+333,Built-up,1.7830389597501697,Built-up
+334,Degraded Vegetation,0.779375458516096,Degraded Vegetation
+335,Degraded Vegetation,0.9419235886012588,Degraded Vegetation
+336,Healthy Vegetation,-0.0608750831724942,Healthy Vegetation
+337,Degraded Vegetation,2.059444276376009,Degraded Vegetation
+338,Degraded Vegetation,1.6126208059042624,Degraded Vegetation
+339,Degraded Vegetation,2.340997360837225,Degraded Vegetation
+340,Built-up,0.3429377553552455,Built-up
+341,Degraded Vegetation,0.730291282726477,Degraded Vegetation
+342,Degraded Vegetation,1.7034616490719023,Degraded Vegetation
+343,Degraded Vegetation,1.813697214801108,Degraded Vegetation
+344,Degraded Vegetation,1.9441983283553723,Degraded Vegetation
+345,Degraded Vegetation,2.32914286622061,Degraded Vegetation
+346,Degraded Vegetation,1.17403446191301,Degraded Vegetation
+347,Degraded Vegetation,0.7403786431593539,Degraded Vegetation
+348,Degraded Vegetation,2.03304271016496,Degraded Vegetation
+349,Degraded Vegetation,1.0115927760018129,Degraded Vegetation
+350,Degraded Vegetation,0.4417982574523457,Degraded Vegetation
+351,Degraded Vegetation,-0.2146110215749288,Degraded Vegetation
+352,Healthy Vegetation,0.2985773201532997,Healthy Vegetation
+353,Degraded Vegetation,1.329819999849548,Degraded Vegetation
+354,Degraded Vegetation,1.61157581722272,Degraded Vegetation
+355,Degraded Vegetation,1.5254964432309597,Degraded Vegetation
+356,Healthy Vegetation,2.064140270047229,Healthy Vegetation
+357,Healthy Vegetation,1.6647296286160955,Healthy Vegetation
+358,Degraded Vegetation,2.0313427131048662,Degraded Vegetation
+359,Degraded Vegetation,1.8344694956268344,Degraded Vegetation
+360,Degraded Vegetation,-0.0386495538749977,Degraded Vegetation
+361,Degraded Vegetation,2.2606176026873035,Degraded Vegetation
+362,Built-up,4.204464211454949,Built-up
+363,Degraded Vegetation,0.0189180377631388,Degraded Vegetation
+364,Degraded Vegetation,1.1374409198153357,Degraded Vegetation
+365,Degraded Vegetation,0.7144711110393362,Degraded Vegetation
+366,Degraded Vegetation,0.9812912259712,Degraded Vegetation
+367,Degraded Vegetation,0.8867861028646116,Degraded Vegetation
+368,Degraded Vegetation,0.4628341633865839,Degraded Vegetation
+369,Healthy Vegetation,0.5411878764119774,Healthy Vegetation
+370,Degraded Vegetation,0.9065037151023454,Degraded Vegetation
+371,Degraded Vegetation,0.483430379150182,Degraded Vegetation
+372,Degraded Vegetation,0.5468564227841528,Degraded Vegetation
+373,Degraded Vegetation,0.888067548865352,Degraded Vegetation
+374,Degraded Vegetation,0.7691452828437194,Degraded Vegetation
+375,Degraded Vegetation,0.5144611122549312,Degraded Vegetation
+376,Degraded Vegetation,1.1510783139667795,Degraded Vegetation
+377,Degraded Vegetation,1.8639236394930656,Degraded Vegetation
+378,Degraded Vegetation,0.9774814971245024,Degraded Vegetation
+379,Degraded Vegetation,0.1558631396159923,Degraded Vegetation
+380,Degraded Vegetation,0.0383592842563701,Degraded Vegetation
+381,Degraded Vegetation,-0.3846540826410775,Degraded Vegetation
+382,Degraded Vegetation,-0.4848952949098999,Degraded Vegetation
+383,Degraded Vegetation,-0.4234204896548178,Degraded Vegetation
+384,Degraded Vegetation,0.8155571710622729,Degraded Vegetation
+385,Degraded Vegetation,1.0360726358630103,Degraded Vegetation
+386,Degraded Vegetation,0.8709883391135634,Degraded Vegetation
+387,Degraded Vegetation,0.2268283173854305,Degraded Vegetation
+388,Degraded Vegetation,0.5492374364753837,Degraded Vegetation
+389,Degraded Vegetation,0.8600592252735243,Degraded Vegetation
+390,Degraded Vegetation,1.2561540067551753,Degraded Vegetation
+391,Degraded Vegetation,4.674847076946648,Degraded Vegetation
+392,Degraded Vegetation,1.008062722883437,Degraded Vegetation
+393,Degraded Vegetation,0.633695444578408,Degraded Vegetation
+394,Degraded Vegetation,1.8039720049562584,Degraded Vegetation
+395,Healthy Vegetation,2.992793791753405,Healthy Vegetation
+396,Healthy Vegetation,4.752645119433946,Healthy Vegetation
+397,Degraded Vegetation,2.389875165745252,Degraded Vegetation
+398,Degraded Vegetation,1.575008161781281,Degraded Vegetation
+399,Degraded Vegetation,1.7552590349896946,Degraded Vegetation
+400,Degraded Vegetation,2.9034032578998983,Degraded Vegetation
+401,Degraded Vegetation,2.275584005305844,Degraded Vegetation
+402,Healthy Vegetation,2.335468104216228,Healthy Vegetation
+403,Built-up,2.544377472623776,Built-up
+404,Degraded Vegetation,2.665693042133089,Degraded Vegetation
+405,Degraded Vegetation,5.328250711457414,Degraded Vegetation
+406,Built-up,5.412010664216942,Built-up
+407,Built-up,3.358118563042299,Built-up
+408,Built-up,2.0219338871043986,Built-up
+409,Degraded Vegetation,2.098853074100799,Degraded Vegetation
+410,Degraded Vegetation,3.294801659114833,Degraded Vegetation
+411,Degraded Vegetation,4.397224799862126,Degraded Vegetation
+412,Degraded Vegetation,2.0238303427679694,Degraded Vegetation
+413,Built-up,1.600294465411943,Built-up
+414,Degraded Vegetation,3.0342566536511444,Degraded Vegetation
+415,Degraded Vegetation,4.214374767184055,Degraded Vegetation
+416,Degraded Vegetation,3.164444241022327,Degraded Vegetation
+417,Built-up,1.1471907936087875,Built-up
+418,Degraded Vegetation,0.2711386866729972,Degraded Vegetation
+419,Degraded Vegetation,-0.2045890938879652,Degraded Vegetation
+420,Degraded Vegetation,-0.0767648545773697,Degraded Vegetation
+421,Degraded Vegetation,1.9746277785514148,Degraded Vegetation
+422,Degraded Vegetation,3.5836977262634435,Degraded Vegetation
+423,Degraded Vegetation,2.4276640487384364,Degraded Vegetation
+424,Built-up,2.61731161816531,Built-up
+425,Degraded Vegetation,2.143673142785323,Degraded Vegetation
+426,Degraded Vegetation,1.6441500173021164,Degraded Vegetation
+427,Degraded Vegetation,0.7345204480079803,Degraded Vegetation
+428,Degraded Vegetation,1.1997516036905451,Degraded Vegetation
+429,Degraded Vegetation,3.5781028953286023,Degraded Vegetation
+430,Degraded Vegetation,2.8991084995169483,Degraded Vegetation
+431,Degraded Vegetation,1.645690873540855,Degraded Vegetation
+432,Degraded Vegetation,1.024055729010016,Degraded Vegetation
+433,Degraded Vegetation,1.1387787970385477,Degraded Vegetation
+434,Degraded Vegetation,2.3786284936462545,Degraded Vegetation
+435,Degraded Vegetation,2.2740996570701344,Degraded Vegetation
+436,Degraded Vegetation,1.291202559957198,Degraded Vegetation
+437,Degraded Vegetation,-0.8578900126443059,Degraded Vegetation
+438,Degraded Vegetation,0.5191426662509779,Degraded Vegetation
+439,Built-up,0.4139173949124123,Built-up
+440,Built-up,2.5164770345149234,Built-up
+441,Built-up,1.0785877319598514,Built-up
+442,Degraded Vegetation,0.5064491183897951,Degraded Vegetation
+443,Built-up,0.1002330618274117,Built-up
+444,Built-up,3.305718085303756,Built-up
+445,Built-up,2.142787696441406,Built-up
+446,Degraded Vegetation,0.4366222558736664,Degraded Vegetation
+447,Built-up,-0.1104622136469311,Built-up
+448,Built-up,2.9326261505258264,Built-up
+449,Degraded Vegetation,2.397941949688456,Degraded Vegetation
+450,Degraded Vegetation,2.4790731814555125,Degraded Vegetation
+451,Degraded Vegetation,4.09537284979779,Degraded Vegetation
+452,Degraded Vegetation,1.194900105485035,Degraded Vegetation
+453,Built-up,0.4747094831961276,Built-up
+454,Degraded Vegetation,-0.2523503451950533,Degraded Vegetation
+455,Degraded Vegetation,2.2184167671464325,Degraded Vegetation
+456,Degraded Vegetation,2.362267026269792,Degraded Vegetation
+457,Built-up,0.7028008150276761,Built-up
+458,Built-up,1.3564378475414245,Built-up
+459,Degraded Vegetation,1.1125358541651929,Degraded Vegetation
+460,Degraded Vegetation,1.25950383995554,Degraded Vegetation
+461,Built-up,4.855817049415614,Built-up
+462,Degraded Vegetation,0.123400036659664,Degraded Vegetation
+463,Degraded Vegetation,1.97819740080868,Degraded Vegetation
+464,Built-up,0.9504147873622883,Built-up
+465,Degraded Vegetation,0.5349899339768741,Degraded Vegetation
+466,Degraded Vegetation,2.235103660203196,Degraded Vegetation
+467,Degraded Vegetation,1.087030859492025,Degraded Vegetation
+468,Degraded Vegetation,0.5113127300079443,Degraded Vegetation
+469,Degraded Vegetation,1.3899289669899426,Degraded Vegetation
+470,Degraded Vegetation,-0.3088844868106923,Degraded Vegetation
+471,Built-up,3.883414252144913,Built-up
+472,Degraded Vegetation,-0.0924654212975225,Degraded Vegetation
+473,Built-up,0.5001187016343065,Built-up
+474,Degraded Vegetation,1.5374308202300957,Degraded Vegetation
+475,Degraded Vegetation,0.9988379882157292,Degraded Vegetation
+476,Built-up,1.36327787206307,Built-up
+477,Built-up,0.8611455660587404,Built-up
+478,Degraded Vegetation,5.168208645302026,Degraded Vegetation
+479,Degraded Vegetation,3.532528223388013,Degraded Vegetation
+480,Built-up,4.478380014782879,Built-up
+481,Built-up,4.298538583754471,Built-up
+482,Degraded Vegetation,4.727560047712164,Degraded Vegetation
+483,Built-up,-0.6086093082180997,Built-up
+484,Degraded Vegetation,3.95151724226344,Degraded Vegetation
+485,Built-up,4.273238485093681,Built-up
+486,Degraded Vegetation,5.940450744677131,Degraded Vegetation
+487,Built-up,0.6038324090139443,Built-up
+488,Built-up,2.545494624977953,Built-up
+489,Degraded Vegetation,0.6706390669910701,Degraded Vegetation
+491,Healthy Vegetation,4.739161230748889,Healthy Vegetation
+492,Degraded Vegetation,0.2600458546277188,Degraded Vegetation
+493,Built-up,0.7580645721341417,Built-up
+494,Built-up,0.1633202128478391,Built-up
+495,Built-up,0.4883403038763172,Built-up
+496,Degraded Vegetation,1.1388173249247489,Degraded Vegetation
+497,Degraded Vegetation,0.5688300829259518,Degraded Vegetation
+498,Built-up,4.480282161939458,Built-up
+499,Degraded Vegetation,8.560668849256803,Degraded Vegetation
+500,Degraded Vegetation,0.0775669036984861,Degraded Vegetation
+501,Degraded Vegetation,-0.3100349266519712,Degraded Vegetation
+502,Degraded Vegetation,-0.3403191990532368,Degraded Vegetation
+503,Healthy Vegetation,-1.137869149446452,Healthy Vegetation
+504,Degraded Vegetation,-0.0345424782503949,Degraded Vegetation
+505,Built-up,2.711352130226601,Built-up
+506,Degraded Vegetation,0.3099798161541129,Degraded Vegetation
+507,Degraded Vegetation,2.140285555691674,Degraded Vegetation
+508,Degraded Vegetation,-0.1397851864063652,Degraded Vegetation
+509,Degraded Vegetation,0.5373364445186896,Degraded Vegetation
+510,Built-up,0.9671444398198592,Built-up
+511,Healthy Vegetation,0.0507569852953052,Healthy Vegetation
+512,Degraded Vegetation,2.32024867952164,Degraded Vegetation
+513,Built-up,3.140938388333201,Built-up
+514,Built-up,2.898891379356629,Built-up
+515,Built-up,-0.2388708689481944,Built-up
+516,Built-up,-0.6772490484918559,Built-up
+517,Built-up,1.1889524736140462,Built-up
+518,Degraded Vegetation,-0.2714629083033769,Degraded Vegetation
+519,Degraded Vegetation,-1.422661524667448,Degraded Vegetation
+520,Built-up,-2.718966051375406,Built-up
+521,Degraded Vegetation,-4.535354105292233,Degraded Vegetation
+522,Degraded Vegetation,-3.6570395351026175,Degraded Vegetation
+523,Degraded Vegetation,0.5626706245899041,Degraded Vegetation
+524,Degraded Vegetation,-0.4440563551535198,Degraded Vegetation
+525,Degraded Vegetation,-0.4610148198185382,Degraded Vegetation
+526,Degraded Vegetation,0.2702693928993393,Degraded Vegetation
+527,Degraded Vegetation,1.8837490227235256,Degraded Vegetation
+528,Degraded Vegetation,-0.9703142677125478,Degraded Vegetation
+529,Degraded Vegetation,0.2546469524994795,Degraded Vegetation
+530,Degraded Vegetation,0.4874672909191858,Degraded Vegetation
+531,Degraded Vegetation,0.0803799877339249,Degraded Vegetation
+532,Degraded Vegetation,-0.0105902384182161,Degraded Vegetation
+533,Degraded Vegetation,-2.048120965149479,Degraded Vegetation
+534,Degraded Vegetation,-0.5546570830098071,Degraded Vegetation
+535,Built-up,0.816211081090384,Built-up
+536,Degraded Vegetation,0.4067313926982323,Degraded Vegetation
+537,Degraded Vegetation,2.0712304689667698,Degraded Vegetation
+538,Degraded Vegetation,1.728603408521558,Degraded Vegetation
+539,Healthy Vegetation,1.680558606853232,Healthy Vegetation
+540,Healthy Vegetation,1.5392550329198358,Healthy Vegetation
+541,Healthy Vegetation,3.6589042301676287,Healthy Vegetation
+542,Degraded Vegetation,2.9054582045962483,Degraded Vegetation
+543,Built-up,-1.8543547112430143,Built-up
+544,Built-up,-4.43651332706232,Built-up
+545,Built-up,-1.6163186070511388,Built-up
+546,Built-up,-1.0827670224969796,Built-up
+547,Built-up,-2.2277606867931694,Built-up
+548,Degraded Vegetation,-1.9607422306163027,Degraded Vegetation
+549,Degraded Vegetation,-0.3682578824531151,Degraded Vegetation
+550,Degraded Vegetation,0.67934116674657,Degraded Vegetation
+551,Degraded Vegetation,1.3983342658889637,Degraded Vegetation
+552,Built-up,0.0818526431868612,Built-up
+553,Built-up,1.7500460143168075,Built-up
+554,Built-up,1.419638941167061,Built-up
+555,Built-up,-0.1296854502291517,Built-up
+556,Built-up,0.0388434776549089,Built-up
+557,Degraded Vegetation,0.938553056875358,Degraded Vegetation
+558,Degraded Vegetation,1.0084821437504834,Degraded Vegetation
+559,Degraded Vegetation,-0.4546199093763565,Degraded Vegetation
+560,Degraded Vegetation,0.5679669483795724,Degraded Vegetation
+561,Built-up,-0.7467609190905684,Built-up
+562,Built-up,0.0728583384515851,Built-up
+563,Degraded Vegetation,-1.4768356564924976,Degraded Vegetation
+564,Built-up,-1.0720020552209746,Built-up
+565,Built-up,-0.9082228314435216,Built-up
+566,Built-up,-0.4264465723983154,Built-up
+567,Degraded Vegetation,-0.2619379142361336,Degraded Vegetation
+568,Built-up,-0.23436571216138,Built-up
+569,Degraded Vegetation,1.2379300965339446,Degraded Vegetation
+570,Built-up,0.3536568577910371,Built-up
+571,Degraded Vegetation,1.7611206055187592,Degraded Vegetation
+572,Built-up,0.4464863516151934,Built-up
+573,Built-up,-0.5213862078408431,Built-up
+574,Built-up,-0.6097268157452983,Built-up
+575,Built-up,0.099729286902779,Built-up
+576,Built-up,-0.2126560482403015,Built-up
+577,Degraded Vegetation,-0.5027414090519696,Degraded Vegetation
+578,Degraded Vegetation,-0.6840153880575789,Degraded Vegetation
+579,Degraded Vegetation,-1.67194971150649,Degraded Vegetation
+580,Built-up,-1.946425986272436,Built-up
+581,Degraded Vegetation,-0.0952556867059478,Degraded Vegetation
+582,Degraded Vegetation,-1.3631517737738772,Degraded Vegetation
+583,Degraded Vegetation,-3.924114228837694,Degraded Vegetation
+584,Degraded Vegetation,-4.819019480330894,Degraded Vegetation
+585,Built-up,-0.6490189611201476,Built-up
+586,Degraded Vegetation,-0.6266792842969793,Degraded Vegetation
+587,Degraded Vegetation,-3.0855357759863997,Degraded Vegetation
+588,Degraded Vegetation,-2.0359065093523787,Degraded Vegetation
+589,Degraded Vegetation,-1.1409973119214254,Degraded Vegetation
+590,Degraded Vegetation,-0.9041266925884496,Degraded Vegetation
+591,Built-up,-1.3292875816431744,Built-up
+592,Built-up,-1.0633837281614544,Built-up
+593,Built-up,-1.792599607947194,Built-up
+594,Built-up,-0.9444278528464372,Built-up
+595,Built-up,-1.3971850553799388,Built-up
+596,Built-up,0.1040939855806853,Built-up
+597,Degraded Vegetation,0.4825022646583768,Degraded Vegetation
+598,Built-up,-0.1759858401511699,Built-up
+599,Built-up,-1.165833267460038,Built-up
+600,Built-up,-2.609382692606739,Built-up
+601,Built-up,-0.2263642538058395,Built-up
+602,Degraded Vegetation,-1.1791142473293297,Degraded Vegetation
+603,Built-up,-1.292731300223744,Built-up
+604,Degraded Vegetation,-2.204284949164117,Degraded Vegetation
+605,Built-up,-0.9389096677748042,Built-up
+606,Degraded Vegetation,-0.986223547025634,Degraded Vegetation
+607,Degraded Vegetation,-1.671314841988711,Degraded Vegetation
+608,Degraded Vegetation,-1.9821356677321555,Degraded Vegetation
+609,Degraded Vegetation,-2.885766687266311,Degraded Vegetation
+610,Degraded Vegetation,-3.302319423196828,Degraded Vegetation
+611,Built-up,-3.652844100096913,Built-up
+612,Degraded Vegetation,-0.1055118738266478,Degraded Vegetation
+613,Degraded Vegetation,-0.6641966897337924,Degraded Vegetation
+614,Degraded Vegetation,-0.4293364081579466,Degraded Vegetation
+615,Degraded Vegetation,-1.3215247468612996,Degraded Vegetation
+616,Built-up,0.2494847126453687,Built-up
+617,Built-up,0.2065848442917375,Built-up
+618,Degraded Vegetation,0.0479696982047118,Degraded Vegetation
+619,Degraded Vegetation,-0.3438658054087147,Degraded Vegetation
+620,Degraded Vegetation,0.0831266279838334,Degraded Vegetation
+621,Degraded Vegetation,0.2219810982702572,Degraded Vegetation
+622,Degraded Vegetation,-0.1723809770638114,Degraded Vegetation
+623,Degraded Vegetation,-0.4478290440678327,Degraded Vegetation
+624,Healthy Vegetation,-0.2506748292920479,Healthy Vegetation
+625,Healthy Vegetation,-0.9967934730573752,Healthy Vegetation
+626,Healthy Vegetation,-0.2368993386076642,Healthy Vegetation
+627,Degraded Vegetation,0.0664864107252218,Degraded Vegetation
+628,Degraded Vegetation,-1.0170531509483731,Degraded Vegetation
+629,Degraded Vegetation,-0.9895357559279696,Degraded Vegetation
+630,Degraded Vegetation,-0.4716738358452376,Degraded Vegetation
+631,Degraded Vegetation,-0.9502633193959832,Degraded Vegetation
+632,Degraded Vegetation,-0.5829355570012288,Degraded Vegetation
+633,Degraded Vegetation,-0.4696856071244253,Degraded Vegetation
+634,Degraded Vegetation,0.241190618897832,Degraded Vegetation
+635,Degraded Vegetation,-0.2797605456631601,Degraded Vegetation
+636,Healthy Vegetation,-0.2256265266047398,Healthy Vegetation
+637,Degraded Vegetation,-0.3986420227920922,Degraded Vegetation
+638,Healthy Vegetation,-0.108882163913062,Healthy Vegetation
+639,Healthy Vegetation,-0.1875766200369935,Healthy Vegetation
+640,Degraded Vegetation,0.3099192761023551,Degraded Vegetation
+641,Degraded Vegetation,0.28659916101399,Degraded Vegetation
+642,Degraded Vegetation,0.484936097127059,Degraded Vegetation
+643,Healthy Vegetation,1.101516599207482,Healthy Vegetation
+644,Healthy Vegetation,0.6994132634302064,Healthy Vegetation
+645,Degraded Vegetation,0.6737992000279183,Degraded Vegetation
+646,Healthy Vegetation,0.5544532293702811,Healthy Vegetation
+647,Degraded Vegetation,0.4750358043375403,Degraded Vegetation
+648,Degraded Vegetation,0.2193650477487422,Degraded Vegetation
+649,Degraded Vegetation,-0.0777902919561198,Degraded Vegetation
+650,Degraded Vegetation,0.5643690453692386,Degraded Vegetation
+651,Degraded Vegetation,0.0367366687945922,Degraded Vegetation
+652,Degraded Vegetation,0.045271680778185,Degraded Vegetation
+653,Healthy Vegetation,-0.2512800977141605,Healthy Vegetation
+654,Degraded Vegetation,-0.1650984198423855,Degraded Vegetation
+655,Degraded Vegetation,-0.5298757354887867,Degraded Vegetation
+656,Degraded Vegetation,-1.7243708871620929,Degraded Vegetation
+657,Degraded Vegetation,-0.6949125210156267,Degraded Vegetation
+658,Degraded Vegetation,-0.9837109165963192,Degraded Vegetation
+659,Degraded Vegetation,-1.4959054226734716,Degraded Vegetation
+660,Degraded Vegetation,-1.2601116212290449,Degraded Vegetation
+661,Degraded Vegetation,-0.9506000847723738,Degraded Vegetation
+662,Degraded Vegetation,0.0149851580798012,Degraded Vegetation
+663,Degraded Vegetation,-0.2289258869510768,Degraded Vegetation
+664,Degraded Vegetation,-0.1182784577877095,Degraded Vegetation
+665,Degraded Vegetation,-0.3078487618340476,Degraded Vegetation
+666,Degraded Vegetation,0.0007616673558942,Degraded Vegetation
+667,Degraded Vegetation,-0.2690465864934468,Degraded Vegetation
+668,Degraded Vegetation,-0.3835621721755621,Degraded Vegetation
+669,Built-up,-0.612990412699048,Built-up
+670,Built-up,-0.4935260887437277,Built-up
+671,Built-up,-1.186693438854959,Built-up
+672,Built-up,0.4158394510129,Built-up
+673,Built-up,0.3804717515593204,Built-up
+674,Built-up,0.7633281319846588,Built-up
+675,Built-up,0.5035275739791145,Built-up
+676,Built-up,-0.1361348176814129,Built-up
+677,Built-up,-0.5636316241147308,Built-up
+678,Built-up,-1.1595163211482906,Built-up
+679,Built-up,-3.1102843394107307,Built-up
+680,Built-up,-2.7841213784580208,Built-up
+681,Degraded Vegetation,-1.3985072507778462,Degraded Vegetation
+682,Built-up,-2.5420508287998715,Built-up
+683,Degraded Vegetation,-1.792347654322902,Degraded Vegetation
+684,Built-up,-1.3738051827395308,Built-up
+685,Degraded Vegetation,-2.9871425685172115,Degraded Vegetation
+686,Degraded Vegetation,-0.2019795229274908,Degraded Vegetation
+687,Degraded Vegetation,-2.102076817105502,Degraded Vegetation
+688,Degraded Vegetation,-2.9136435823162325,Degraded Vegetation
+689,Built-up,-0.062311157739799,Built-up
+690,Degraded Vegetation,-0.2279206165562994,Degraded Vegetation
+691,Built-up,0.102471670967014,Built-up
+692,Degraded Vegetation,-0.5373295544707491,Degraded Vegetation
+693,Degraded Vegetation,-0.8710707278011879,Degraded Vegetation
+694,Degraded Vegetation,-0.4935571560940205,Degraded Vegetation
+696,Degraded Vegetation,-1.5974615623901232,Degraded Vegetation
+697,Degraded Vegetation,-0.6423888653697927,Degraded Vegetation
+698,Degraded Vegetation,-0.8847203631166505,Degraded Vegetation
+699,Degraded Vegetation,-0.8356934295371248,Degraded Vegetation
+700,Built-up,0.1858868173486312,Built-up
+701,Degraded Vegetation,-0.0134423451897174,Degraded Vegetation
+702,Built-up,-0.6821918685488241,Built-up
+703,Degraded Vegetation,-0.3091394549392728,Degraded Vegetation
+704,Degraded Vegetation,-0.2840984608296581,Degraded Vegetation
+705,Built-up,-0.6149861505220022,Built-up
+706,Degraded Vegetation,-0.7547112251026342,Degraded Vegetation
+707,Degraded Vegetation,-1.9660099882871784,Degraded Vegetation
+708,Degraded Vegetation,-0.7508243644153028,Degraded Vegetation
+709,Degraded Vegetation,-0.4224762435133637,Degraded Vegetation
+710,Degraded Vegetation,-0.5336228489107798,Degraded Vegetation
+711,Degraded Vegetation,-1.4349108784825455,Degraded Vegetation
+712,Degraded Vegetation,-1.6526637460548776,Degraded Vegetation
+713,Degraded Vegetation,-1.0710490087927758,Degraded Vegetation
+714,Degraded Vegetation,-0.6187757689129664,Degraded Vegetation
+715,Degraded Vegetation,-0.7308451508823095,Degraded Vegetation
+716,Degraded Vegetation,-1.364258444489757,Degraded Vegetation
+717,Degraded Vegetation,-0.6849169608822737,Degraded Vegetation
+718,Degraded Vegetation,-1.1510598671650776,Degraded Vegetation
+719,Degraded Vegetation,-1.5034843324873226,Degraded Vegetation
+720,Degraded Vegetation,-5.62559294289165,Degraded Vegetation
+721,Built-up,-7.542486219736816,Built-up
+722,Built-up,-6.523849168032453,Built-up
+723,Built-up,-2.7449710348815333,Built-up
+725,Degraded Vegetation,0.3838687229263787,Degraded Vegetation
+726,Degraded Vegetation,-2.2844252831142686,Degraded Vegetation
+727,Degraded Vegetation,-5.176482575566956,Degraded Vegetation
+746,Built-up,7.425165277003328,Built-up
+768,Degraded Vegetation,1.117252557231365,Degraded Vegetation
+769,Degraded Vegetation,-0.4011990290499971,Degraded Vegetation
+770,Degraded Vegetation,4.596754998697602,Degraded Vegetation
+771,Degraded Vegetation,8.793674709810968,Degraded Vegetation
+772,Degraded Vegetation,7.120982564993217,Degraded Vegetation
+773,Healthy Vegetation,4.824177020456531,Healthy Vegetation
+774,Degraded Vegetation,1.841169438511004,Degraded Vegetation
+775,Built-up,0.1074643828474219,Built-up
+776,Degraded Vegetation,1.4607809616172092,Degraded Vegetation
+777,Built-up,0.8324862489402345,Built-up
+781,Built-up,9.42779035691837,Built-up
+784,Built-up,6.602986067487249,Built-up
+785,Degraded Vegetation,7.502429750839234,Degraded Vegetation
+796,Built-up,9.320631410060669,Built-up
+797,Degraded Vegetation,10.220403971038929,Degraded Vegetation
+802,Degraded Vegetation,9.868572778827136,Degraded Vegetation
+805,Built-up,4.625920209985548,Built-up
+806,Built-up,0.389508922660826,Built-up
+810,Built-up,1.44767956913371,Built-up
+815,Degraded Vegetation,5.7886169400780485,Degraded Vegetation
+817,Built-up,0.0020056013193897,Built-up
+818,Degraded Vegetation,2.732619477737708,Degraded Vegetation
+819,Degraded Vegetation,1.5524019191692937,Degraded Vegetation
+820,Built-up,0.6198707799495298,Built-up
+821,Built-up,3.687900571102309,Built-up
+822,Built-up,-0.2006176989760734,Built-up
+823,Degraded Vegetation,0.091095223784382,Degraded Vegetation
+824,Degraded Vegetation,0.7018637236371663,Degraded Vegetation
+825,Degraded Vegetation,0.8247924544744845,Degraded Vegetation
+826,Built-up,1.4607969012842943,Built-up
+827,Built-up,-0.4506201964260937,Built-up
+831,Built-up,0.702485541261125,Built-up
+832,Built-up,0.5976810491053572,Built-up
+833,Built-up,2.1542919000370544,Built-up
+834,Healthy Vegetation,0.4891541148683029,Healthy Vegetation
+835,Built-up,0.184090328593214,Built-up
+836,Built-up,-0.7211756007770169,Built-up
+837,Degraded Vegetation,-0.1136491129361483,Degraded Vegetation
+838,Degraded Vegetation,0.5009599457914242,Degraded Vegetation
+839,Degraded Vegetation,0.2852653721328726,Degraded Vegetation
+840,Degraded Vegetation,0.0504895189141033,Degraded Vegetation
+846,Built-up,9.702046176553404,Built-up
+848,Degraded Vegetation,7.710532582851858,Degraded Vegetation
+849,Built-up,2.3775448327088373,Built-up
+851,Degraded Vegetation,8.76176951506102,Degraded Vegetation
+852,Degraded Vegetation,7.173949443020725,Degraded Vegetation
+853,Degraded Vegetation,7.926097699592773,Degraded Vegetation
+854,Degraded Vegetation,7.764470496761826,Degraded Vegetation
+855,Built-up,9.451903991340696,Built-up
+856,Degraded Vegetation,8.53748904261848,Degraded Vegetation
+857,Degraded Vegetation,8.041544326845546,Degraded Vegetation
+858,Built-up,9.667000403694413,Built-up
+860,Built-up,9.2167659074718,Built-up
+863,Built-up,7.622182516634849,Built-up
+864,Built-up,9.250999609182143,Built-up
+865,Degraded Vegetation,8.558941469652446,Degraded Vegetation
+866,Degraded Vegetation,9.188042641258468,Degraded Vegetation
+867,Degraded Vegetation,7.542962070226194,Degraded Vegetation
+868,Degraded Vegetation,6.230394703204322,Degraded Vegetation
+869,Degraded Vegetation,5.643997176353761,Degraded Vegetation
+870,Degraded Vegetation,7.648379254231745,Degraded Vegetation
+871,Degraded Vegetation,6.943460725401224,Degraded Vegetation
+872,Degraded Vegetation,6.387807815486156,Degraded Vegetation
+873,Degraded Vegetation,6.63215900536465,Degraded Vegetation
+874,Degraded Vegetation,6.599764091507027,Degraded Vegetation
+875,Degraded Vegetation,5.60041172490671,Degraded Vegetation
+876,Degraded Vegetation,5.040936909058914,Degraded Vegetation
+877,Degraded Vegetation,5.027531920932676,Degraded Vegetation
+878,Degraded Vegetation,4.699076745968475,Degraded Vegetation
+879,Degraded Vegetation,5.638592749891959,Degraded Vegetation
+880,Healthy Vegetation,5.005568838611646,Healthy Vegetation
+881,Healthy Vegetation,4.710791065873986,Healthy Vegetation
+882,Healthy Vegetation,4.6900715324533,Healthy Vegetation
+883,Healthy Vegetation,3.653820123017563,Healthy Vegetation
+885,Degraded Vegetation,2.7505260403409038,Degraded Vegetation
+886,Degraded Vegetation,3.007477836127676,Degraded Vegetation
+887,Degraded Vegetation,2.506110615411448,Degraded Vegetation
+888,Degraded Vegetation,0.8831924976600986,Degraded Vegetation
+889,Degraded Vegetation,0.4243959057673189,Degraded Vegetation
+890,Healthy Vegetation,1.0362189356470082,Healthy Vegetation
+891,Healthy Vegetation,0.7306684762238265,Healthy Vegetation
+892,Healthy Vegetation,0.987484509808826,Healthy Vegetation
+893,Healthy Vegetation,0.5807897787402525,Healthy Vegetation
+894,Degraded Vegetation,2.1074064080754997,Degraded Vegetation
+895,Degraded Vegetation,1.2459036193650133,Degraded Vegetation
+896,Degraded Vegetation,1.4845456772078518,Degraded Vegetation
+897,Degraded Vegetation,1.189933715691138,Degraded Vegetation
+898,Degraded Vegetation,0.2166754846508956,Degraded Vegetation
+899,Degraded Vegetation,0.1562673295346361,Degraded Vegetation
+900,Degraded Vegetation,0.6172402857453438,Degraded Vegetation
+901,Degraded Vegetation,-0.2464083315666521,Degraded Vegetation
+902,Degraded Vegetation,0.1192161308351716,Degraded Vegetation
+903,Healthy Vegetation,0.7013226127314927,Healthy Vegetation
+905,Healthy Vegetation,0.2413752092244047,Healthy Vegetation
+906,Healthy Vegetation,1.4867030190255723,Healthy Vegetation
+907,Healthy Vegetation,-0.4158825146315488,Healthy Vegetation
+908,Degraded Vegetation,-0.7938175797336513,Degraded Vegetation
+909,Degraded Vegetation,-0.4854005245615945,Degraded Vegetation
+910,Degraded Vegetation,-0.617330366591741,Degraded Vegetation
+911,Degraded Vegetation,-0.769044235550276,Degraded Vegetation
+912,Degraded Vegetation,-1.0947667821322566,Degraded Vegetation
+913,Degraded Vegetation,-0.6914484273365611,Degraded Vegetation
+914,Degraded Vegetation,-0.9832164487306454,Degraded Vegetation
+915,Degraded Vegetation,-0.3120525196276627,Degraded Vegetation
+916,Degraded Vegetation,-0.7525435172389175,Degraded Vegetation
+917,Degraded Vegetation,-0.9273185096019424,Degraded Vegetation
+918,Degraded Vegetation,-0.4534198041285013,Degraded Vegetation
+919,Degraded Vegetation,-1.0216867958526246,Degraded Vegetation
+920,Degraded Vegetation,-0.8453769181769628,Degraded Vegetation
+921,Degraded Vegetation,-1.1099933889264082,Degraded Vegetation
+922,Healthy Vegetation,-0.7199157855574438,Healthy Vegetation
+923,Healthy Vegetation,-0.9629362012349916,Healthy Vegetation
+925,Healthy Vegetation,-0.6363049129955869,Healthy Vegetation
+926,Degraded Vegetation,-0.9166172270921548,Degraded Vegetation
+927,Healthy Vegetation,-0.4076199948405825,Healthy Vegetation
+928,Healthy Vegetation,-0.6899112886723431,Healthy Vegetation
+929,Degraded Vegetation,-0.3475632193634569,Degraded Vegetation
+930,Healthy Vegetation,-0.1380062001839326,Healthy Vegetation
+931,Degraded Vegetation,0.3423626616108999,Degraded Vegetation
+932,Built-up,-0.2847183505397616,Built-up
+933,Built-up,-0.4881509688536795,Built-up
+934,Built-up,-0.3957186918566572,Built-up
+935,Degraded Vegetation,0.1582712043144545,Degraded Vegetation
+936,Degraded Vegetation,-1.539065996688867,Degraded Vegetation
+937,Degraded Vegetation,0.1037223661561186,Degraded Vegetation
+938,Built-up,0.1526048573354449,Built-up
+939,Degraded Vegetation,-1.2332116567477396,Degraded Vegetation
+940,Degraded Vegetation,-1.6328403377355545,Degraded Vegetation
+941,Degraded Vegetation,-2.1705683684363586,Degraded Vegetation
+942,Degraded Vegetation,-2.998073103253774,Degraded Vegetation
+943,Degraded Vegetation,-1.3020310043036636,Degraded Vegetation
+944,Healthy Vegetation,-1.0825754936641214,Healthy Vegetation
+945,Healthy Vegetation,-0.972605427907986,Healthy Vegetation
+946,Degraded Vegetation,-0.091029844062428,Degraded Vegetation
+947,Degraded Vegetation,-0.4937460804414272,Degraded Vegetation
+948,Degraded Vegetation,-0.6251247932812075,Degraded Vegetation
+949,Degraded Vegetation,-0.2426340042381337,Degraded Vegetation
+950,Degraded Vegetation,-0.2408518665940456,Degraded Vegetation
+951,Degraded Vegetation,-0.8784452761370416,Degraded Vegetation
+952,Degraded Vegetation,-1.1034514226313137,Degraded Vegetation
+953,Degraded Vegetation,-0.9751808805577292,Degraded Vegetation
+954,Degraded Vegetation,-0.5505606754844443,Degraded Vegetation
+955,Degraded Vegetation,-0.7493017958444743,Degraded Vegetation
+956,Built-up,-0.4305916282704339,Built-up
+957,Built-up,-0.5446172436260862,Built-up
+960,Degraded Vegetation,0.5526975004468241,Degraded Vegetation
+961,Degraded Vegetation,0.5663011211921458,Degraded Vegetation
