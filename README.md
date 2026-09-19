@@ -156,6 +156,7 @@ Every time you want to run any part of this pipeline, activate the environment f
 
 ```bash
 conda activate coastguard
+cd coastguard
 ```
 
 ### 1.5 Activate the Google Earth Engine API
