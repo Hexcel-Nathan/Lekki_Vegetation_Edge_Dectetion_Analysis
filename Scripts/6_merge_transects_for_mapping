@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+===============================================================================
+STEP 6 of 6 IN THE FULL PIPELINE - merge_transects_for_mapping.py
+===============================================================================
+PURPOSE: Builds ONE continuous, mappable transect shapefile across all
+analysed segments, with overlap-zone duplicates already removed, and joins
+in your per-epoch retreat/advance rates (wide format: one column per epoch,
+ready to symbolise directly in ArcGIS) plus vegetation type per transect, if
+that lookup file exists yet.
+
+Run this AFTER Steps 3 and 4 (needs the merged pickle from Step 3 and the
+per-transect rates CSV from Step 4).
+
+DESIGN NOTE (why this is more robust than it might look): rather than
+re-deriving the overlap-trimming logic a second time, this uses the
+ALREADY-merged Data/LEKKI/intersections/LEKKI_transect_intersects.pkl as the
+single source of truth for which transects survived merging and what their
+final TransectID is - then just re-attaches the correct geometry from each
+segment's own raw Transects.shp. This guarantees the map lines up exactly
+with your rate calculations, with no risk of the two merges drifting out of
+sync. It also derives which segments to use directly from the merged
+pickle's own 'source_segment' column, rather than a hardcoded list - so it
+automatically stays correct even if which segments are included in the
+analysis ever changes upstream.
+
+Run with: (coastguard) $ python merge_transects_for_mapping.py
+"""
+
+# ----------------------------------------------------------------------
+# CHUNK 1: Imports
+# ----------------------------------------------------------------------
+import os
+import pickle
+import pandas as pd
+import geopandas as gpd
+
+
+# ----------------------------------------------------------------------
+# CHUNK 2: EDIT ME - settings (must match Steps 3/4)
+# ----------------------------------------------------------------------
+MERGED_SITE = "LEKKI"
+DATA_ROOT = "Data"
+
+MERGED_PKL = os.path.join(DATA_ROOT, MERGED_SITE, "intersections", f"{MERGED_SITE}_transect_intersects.pkl")
+RATES_CSV = os.path.join(DATA_ROOT, MERGED_SITE, "vegedge_change_per_transect_new.csv")
+VEGTYPE_CSV = os.path.join(DATA_ROOT, MERGED_SITE, "veg_type_lookup_new.csv")  # optional - OK if missing for now
+
+OUT_SHP = os.path.join(DATA_ROOT, MERGED_SITE, "lines", f"{MERGED_SITE}_Mapping_Transects.shp")
+
+# Shapefile column names are limited to 10 characters - map each epoch
+# string to a short, safe field name.
+EPOCH_FIELD_CODES = {
+    "2013-2015": "1315", "2015-2020": "1520", "2020-2025": "2025", "2013-2025": "1325"
+}
+
+
+# ----------------------------------------------------------------------
+# CHUNK 3: Build a lookup of which (segment, local TransectID) pairs
+#          survived the earlier merge, and what merged TransectID they
+#          were given.
+# ----------------------------------------------------------------------
+with open(MERGED_PKL, "rb") as f:
+    merged_intersections = pickle.load(f)
+
+lookup = merged_intersections[["source_segment", "local_TransectID", "TransectID"]].copy()
+lookup = lookup.rename(columns={"TransectID": "MergedTransectID"})
+print(f"Loaded lookup for {len(lookup)} surviving transects from {MERGED_PKL}")
+
+SEGMENT_SITES = sorted(lookup["source_segment"].unique())
+print(f"Segments found in merged pkl: {SEGMENT_SITES}")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 4: For each segment, load its plain Transects.shp and keep only
+#          the rows that survived merging, tagged with the correct
+#          merged TransectID.
+# ----------------------------------------------------------------------
+segment_geoms = []
+for site in SEGMENT_SITES:
+    shp_path = os.path.join(DATA_ROOT, site, "lines", f"{site}_Transects.shp")
+    if not os.path.isfile(shp_path):
+        print(f"  WARNING: {shp_path} not found - skipping {site}")
+        continue
+
+    gdf = gpd.read_file(shp_path)
+    print(f"  {site}: loaded {shp_path}, CRS = {gdf.crs}")
+    site_lookup = lookup.loc[lookup["source_segment"] == site]
+
+    merged = gdf.merge(site_lookup, left_on="TransectID", right_on="local_TransectID", how="inner")
+    merged = merged.drop(columns=["TransectID"])
+    print(f"  {site}: matched {len(merged)}/{len(gdf)} transects to the merged dataset")
+    segment_geoms.append(merged)
+
+all_transects = gpd.GeoDataFrame(pd.concat(segment_geoms, ignore_index=True), crs=segment_geoms[0].crs)
+all_transects = all_transects.sort_values("MergedTransectID").reset_index(drop=True)
+all_transects = all_transects.rename(columns={"MergedTransectID": "TransectID"})
+all_transects = all_transects[["TransectID", "geometry"]]
+
+print(f"Total merged transect geometries: {len(all_transects)}")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 5: Pivot the per-epoch rates wide (one column per epoch) and
+#          join onto the transect geometries.
+# ----------------------------------------------------------------------
+rates = pd.read_csv(RATES_CSV)
+
+rate_wide = rates.pivot(index="TransectID", columns="epoch", values="rate_m_yr")
+rate_wide.columns = [f"rate_{EPOCH_FIELD_CODES.get(c, c[:10])}" for c in rate_wide.columns]
+
+status_wide = rates.pivot(index="TransectID", columns="epoch", values="status")
+status_wide.columns = [f"stat_{EPOCH_FIELD_CODES.get(c, c[:10])}" for c in status_wide.columns]
+
+rates_wide = rate_wide.join(status_wide).reset_index()
+all_transects = all_transects.merge(rates_wide, on="TransectID", how="left")
+print(f"Joined per-epoch rates: {list(rate_wide.columns)}")
+print("NOTE: any structure-affected transect (Lekki Deep Sea Port) will show real "
+      "values only for epochs before its construction date, NaN afterward - this is "
+      "correct and expected; symbolise NaN cells distinctly (grey/hatch) rather than "
+      "treating them as zero or missing data.")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 6: Join vegetation type too, if that file exists yet.
+# ----------------------------------------------------------------------
+if os.path.isfile(VEGTYPE_CSV):
+    veg_types = pd.read_csv(VEGTYPE_CSV)
+    all_transects = all_transects.merge(veg_types, on="TransectID", how="left")
+    print(f"Joined vegetation type from {VEGTYPE_CSV}")
+else:
+    print(f"NOTE: {VEGTYPE_CSV} not found yet - map created WITHOUT vegetation type. "
+          f"Re-run this script after you've built veg_type_lookup.csv to add it.")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 7: Save the final mappable shapefile
+# ----------------------------------------------------------------------
+FALLBACK_CRS = "EPSG:32631"  # UTM 31N - matches the rest of this project
+if all_transects.crs is None:
+    print(f"\nWARNING: CRS was lost somewhere in the merge above - "
+          f"setting it explicitly to {FALLBACK_CRS} before saving.")
+    all_transects = all_transects.set_crs(FALLBACK_CRS)
+else:
+    print(f"\nCRS confirmed present before saving: {all_transects.crs}")
+
+os.makedirs(os.path.dirname(OUT_SHP), exist_ok=True)
+all_transects.to_file(OUT_SHP)
+print(f"\nSaved -> {OUT_SHP}")
+print("Load this into ArcGIS and symbolise by rate_1315 / rate_1520 / rate_2025 / rate_1325 "
+      "for epoch maps, or by VegType (once joined) for the vegetation-type map.")
+print("\nNext: continue in ArcGIS Pro with the CVI/Buffer guide (Part A then Part B) "
+      "using this shapefile plus veg_rate_for_cvi_join.csv and "
+      "waterline_rate_for_cvi_join.csv from Steps 4/5.")
