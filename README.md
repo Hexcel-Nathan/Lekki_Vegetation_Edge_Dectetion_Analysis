@@ -14,7 +14,7 @@ Built on [COASTGUARD](https://github.com/fmemuir/COASTGUARD) / VedgeSat (Muir et
 - [Pipeline overview](#pipeline-overview)
 - [Scripts, in run order](#scripts-in-run-order)
 - [Key methodological decisions](#key-methodological-decisions)
-- [Setup](#setup)
+- [1. Installation](#1-installation)
 - [How to run](#how-to-run)
 - [Outputs](#outputs)
 - [Known gaps / not yet included](#known-gaps--not-yet-included)
@@ -75,7 +75,7 @@ The corridor is split into **13 segments (LEKKI01–13, ~69.46 km)** with 250 m 
 | 1 | `split_refline_into_segments.py` | Once | Splits the single hand-digitised reference line into 13 overlapping segment shapefiles, each in its own `Data/<sitename>/referenceLines/` folder. Everything downstream depends on this running first. |
 | 1b | `activate_segment.py` | Once per segment, before each segment's Step 2 | COASTGUARD keeps one *shared* `Data/referenceLines/` folder rather than a per-site one — this copies the segment-in-progress's reference line into that shared folder so the drivers below pick up the right one. |
 | 2 | `VedgeSat_Driver_LEKKI.py` | Once per segment | Downloads Landsat 8 / Sentinel-2 imagery for the segment's AOI, classifies vegetation, extracts sub-pixel vegetation-edge and waterline positions. The slowest step — hours per segment. |
-| — | `CoasTrack_Driver_LEKKI.py` | Once per segment | Casts cross-shore transects along the segment's reference line and intersects them with the extracted vegetation edges, waterlines, waves (via Copernicus Marine Service), and topography, producing the per-transect time series. |
+| — | `CoasTrack_Driver_LEKKI.py` | Once per segment | Casts cross-shore transects along the segment's reference line and intersects them with the extracted vegetation edges, waterlines, waves, and topography, producing the per-transect time series. |
 | 3 | `merge_segment_outputs.py` | Once, after all 13 segments | Stitches every segment's veglines, waterlines, transects and intersections into one `LEKKI` dataset — trims the 250 m overlaps (keeping only each segment's "core" territory), and renumbers `TransectID` sequentially along the true coastline distance. |
 | 4 | `epoch_change_stats.py` | Once | Computes robust per-epoch and full-period vegetation-edge change rates per transect (Theil-Sen regression, outlier filtering, structure-aware exclusion around the Lekki Deep Sea Port). Produces the `veg_retreat_rate` field used in the CVI. |
 | 5 | `waterline_change_stats.py` | Once | Waterline-equivalent of Step 4. **Not yet included in this repo** — see [Known gaps](#known-gaps--not-yet-included). |
@@ -92,29 +92,85 @@ Documented here so they don't live only as comments buried in the code:
 - **Epochs:** 2013–2015, 2015–2020, 2020–2025, and the full 2013–2025 period.
 - **The single `veg_retreat_rate` used in the CVI join** is the mean of available sub-period rates where they exist, falling back to the full-period rate where they don't (Chapter 3, Section 3.6's rule).
 - **CRS:** EPSG:32631 (UTM 31N) throughout, for consistent metric distance/area operations.
-- **Tidal correction** uses the FES2014/FES2022 model; **wave data** comes from the Copernicus Marine Service (CMEMS) — both require separate account setup (see [Setup](#setup)).
 
-## Setup
+## 1. Installation
 
-This pipeline runs inside COASTGUARD's own conda environment, plus a couple of extra accounts:
+### INSTALL QUICK VERSION
+
+1. Open a command line, navigate to your favoured spot for the repo folder, and download the repo: `git clone https://github.com/Hexcel-Nathan/Lekki_Vegetation_Edge_Dectetion_Analysis.git`
+2. Also clone COASTGUARD itself, since this repo's scripts import its `Toolshed` package: `git clone https://github.com/fmemuir/COASTGUARD.git`
+3. Navigate into `COASTGUARD` and create the environment: `conda env create -f coastguard_env.yml` (use this repo's copy, or COASTGUARD's own — they're identical)
+
+### INSTALL STEPS SUMMARY
+
+1. Download this repo and COASTGUARD (above)
+2. Create conda environment: `conda env create -f coastguard_env.yml`
+3. Activate env: `conda activate coastguard`
+4. Authenticate GEE: `earthengine authenticate`
+
+**Remember!** Always run `conda activate coastguard` each time you want to use the pipeline. You *should not* need to authenticate `earthengine` each time, just the once when installing.
+
+### 1.1 Download the code
+
+You'll need both this repo and COASTGUARD itself. Either clone them with git (see Quick Version above), or click the green **Code** button on each repo's GitHub page and download + extract the zipped folder. If you download manually, extract to a proper local folder rather than leaving it in Downloads.
+
+### 1.2 Install Miniconda (if you don't already have it)
+
+This pipeline needs Python packages managed through Anaconda/Miniconda. If you don't have either installed:
+
+1. Go to https://www.anaconda.com/download (or https://docs.conda.io/en/latest/miniconda.html for the lighter Miniconda version — recommended, since you don't need the full Anaconda Navigator GUI for this).
+2. Download the installer for your OS and run it, accepting the defaults.
+3. Restart your terminal (or Anaconda Prompt on Windows) once installation finishes.
+
+### 1.3 Create the conda environment
+
+Once Anaconda/Miniconda is installed:
+
+- **Windows:** open the **Anaconda Prompt** (not PowerShell)
+- **Mac/Linux:** open a terminal window
+
+Navigate to wherever you cloned COASTGUARD:
 
 ```bash
-# 1. Clone COASTGUARD itself (this repo's scripts import its Toolshed package)
-git clone https://github.com/fmemuir/COASTGUARD.git
 cd COASTGUARD
-./install.sh
-# or manually:
+```
+
+Then create the environment from the `coastguard_env.yml` file:
+
+```bash
+conda update -n base conda
 conda env create -f coastguard_env.yml
+```
+
+This can take anywhere from a few minutes to a couple of hours depending on your base environment — conda has to resolve every package's dependencies. If it's taking a long time, install [Mamba](https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community) as a faster solver:
+
+```bash
+conda update -n base conda
+conda install -n base conda-libmamba-solver
+conda config --set solver libmamba
+```
+
+### 1.4 Activate the environment
+
+Every time you want to run any part of this pipeline, activate the environment first:
+
+```bash
 conda activate coastguard
 ```
 
-You'll also need:
+### 1.5 Activate the Google Earth Engine API
 
-- **Google Earth Engine access** — sign up at https://signup.earthengine.google.com/, then run `earthengine authenticate` once inside the `coastguard` environment.
-- **Copernicus Marine Service (CMEMS) account** — needed for wave data intersections in `CoasTrack_Driver_LEKKI.py`. Install with `pip install "copernicusmarine>=1.0,<=2.0"`.
-- **FES2014/2022 tidal data** — needed for waterline tidal correction. See COASTGUARD's own [FES2022 setup guide](https://github.com/kvos/CoastSat/blob/master/doc/FES2022_setup.md).
+This pipeline uses Google Earth Engine (GEE) to pull satellite imagery. You need GEE API access:
 
-Place this repo's scripts inside (or alongside) your cloned COASTGUARD folder, so `from Toolshed import ...` resolves correctly.
+1. Sign up at https://signup.earthengine.google.com/ with a Google account (select "research" as your intended use). Approval can take up to 24 hours, usually faster.
+2. While you wait, install the Google Cloud Command Line Interface (gcloud CLI) — instructions at https://cloud.google.com/sdk/docs/install.
+3. Once approved, open a terminal, `conda activate coastguard`, then run:
+   ```bash
+   earthengine authenticate
+   ```
+4. A browser window opens — log in with the same Google account you used to sign up for GEE. It should redirect back to your terminal automatically; if not, paste the authorization code shown into the terminal.
+
+You shouldn't need to repeat this step on future runs — just the one-time authentication.
 
 ## How to run
 
