@@ -1,0 +1,23 @@
+name: coastguard
+channels:
+  - conda-forge
+  - fbriol
+dependencies:
+  - python=3.10
+  - pyfes
+  - earthengine-api
+  - pandas=2.0.3
+  - geopandas
+  - spyder=5.5.0
+  - geemap
+  - scikit-image
+  - matplotlib
+  - rasterio
+  - seaborn
+  - astropy
+  - geopy
+  - notebook
+  - netcdf4
+  - arosics
+  - utm
+  - xarray
