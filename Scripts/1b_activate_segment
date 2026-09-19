@@ -1,0 +1,112 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+activate_segment.py
+
+Your installed COASTGUARD keeps ONE shared Data/referenceLines/ folder for
+ALL sites (Toolbox.CreateFileStructure() returns the base 'Data' path, not
+a per-site path) - it does NOT look inside Data/<sitename>/referenceLines/.
+
+So before running VedgeSat_Driver_LEKKI.py / CoasTrack driver for a given
+segment, that segment's Lagos_RefLine.* files need to be copied into the
+shared Data/referenceLines/ folder, overwriting whatever was there before.
+This script does that copy for you, one segment at a time.
+
+Run with: (coastguard) $ python activate_segment.py LEKKI01
+                          (coastguard) $ python activate_segment.py LEKKI02
+                          ... etc, right before running the drivers for
+                          that segment.
+"""
+
+# ----------------------------------------------------------------------
+# CHUNK 1: Imports
+# ----------------------------------------------------------------------
+import os
+import sys
+import glob
+import shutil
+
+
+# ----------------------------------------------------------------------
+# CHUNK 2: EDIT ME - only if your folder names differ
+# ----------------------------------------------------------------------
+DATA_ROOT = "Data"
+SHARED_REFLINE_FOLDER = os.path.join(DATA_ROOT, "referenceLines")
+REFLINE_BASENAME = "Lagos_RefLine"   # matches referenceLineShp = 'LagosRefLine.shp'
+
+
+# ----------------------------------------------------------------------
+# CHUNK 3: Read which segment to activate from the command line
+# ----------------------------------------------------------------------
+# e.g. "python activate_segment.py LEKKI01" -> segment = "LEKKI01"
+if len(sys.argv) != 2:
+    print("Usage: python activate_segment.py LEKKI01   (or LEKKI02)")
+    sys.exit(1)
+
+segment = sys.argv[1]
+source_folder = os.path.join(DATA_ROOT, segment, "referenceLines")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 4: Remove whatever reference-line files are currently shared
+# ----------------------------------------------------------------------
+# Clears out the previous segment's files so nothing stale gets picked up
+# by accident (e.g. a leftover .shx from a different segment).
+#
+# ROBUSTNESS FIX: a real crash happened here before - a stale ArcGIS
+# ".sr.lock" file (created whenever the shapefile is open in ArcGIS Pro/
+# Catalog) matched this same glob pattern and couldn't be deleted
+# (PermissionError), crashing the whole script mid-loop and leaving some
+# old files removed and others not. Two changes: (1) lock files are
+# reported and skipped rather than crashing the script - they're
+# transient and ArcGIS recreates them as needed, so leaving one behind
+# doesn't break anything; (2) every other delete is wrapped so ONE
+# locked file can't stop the rest of the cleanup from completing.
+import time
+
+os.makedirs(SHARED_REFLINE_FOLDER, exist_ok=True)
+old_files = glob.glob(os.path.join(SHARED_REFLINE_FOLDER, f"{REFLINE_BASENAME}.*"))
+skipped_locks = []
+for f in old_files:
+    if f.endswith(".lock") or ".sr.lock" in f:
+        print(f"  SKIPPED (lock file, likely ArcGIS has this open): {f}")
+        skipped_locks.append(f)
+        continue
+    try:
+        os.remove(f)
+        print(f"  removed old file: {f}")
+    except PermissionError:
+        # Brief retry once - sometimes the lock clears within a second
+        time.sleep(1)
+        try:
+            os.remove(f)
+            print(f"  removed old file (after retry): {f}")
+        except PermissionError:
+            print(f"  SKIPPED (still locked after retry - close ArcGIS Pro/Catalog "
+                  f"if this file needs to be replaced): {f}")
+            skipped_locks.append(f)
+
+if skipped_locks:
+    print(f"\n  NOTE: {len(skipped_locks)} file(s) could not be removed (see above). "
+          "If any of these are real data files (not .lock files), close whatever "
+          "program has them open and re-run this script before continuing - "
+          "otherwise the copy step below may fail or leave stale data mixed in "
+          "with the new segment's files.\n")
+
+
+# ----------------------------------------------------------------------
+# CHUNK 5: Copy this segment's files into the shared folder
+# ----------------------------------------------------------------------
+segment_files = glob.glob(os.path.join(source_folder, f"{REFLINE_BASENAME}.*"))
+if not segment_files:
+    print(f"ERROR: no {REFLINE_BASENAME}.* files found in {source_folder}")
+    print("Did you run split_refline_into_segments.py first?")
+    sys.exit(1)
+
+for f in segment_files:
+    dest = os.path.join(SHARED_REFLINE_FOLDER, os.path.basename(f))
+    shutil.copy2(f, dest)
+    print(f"  copied: {f}  ->  {dest}")
+
+print(f"\n{segment} is now the active reference line in {SHARED_REFLINE_FOLDER}")
+print(f"You can now run VedgeSat_Driver_LEKKI.py and the CoasTrack driver with sitename = '{segment}'.")
