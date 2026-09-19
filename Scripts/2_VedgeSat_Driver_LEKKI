@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+===============================================================================
+STEP 2 of 6 IN THE FULL PIPELINE - VedgeSat_Driver_LEKKI.py
+===============================================================================
+PURPOSE: Runs the actual VedgeSat vegetation-edge AND waterline extraction for
+ONE segment - downloads Landsat 8 / Sentinel-2 imagery for that segment's AOI,
+classifies vegetation, extracts sub-pixel edge positions, and saves the
+results as shapefiles under Data/<sitename>/lines/.
+
+RUN THIS ONCE PER SEGMENT: change 'sitename' below (CHUNK: EDIT ME) to each
+of LEKKI01 through LEKKI11 in turn, run the whole script, then move to the
+next sitename. Every segment folder must already exist with a real
+referenceLines/Lagos_RefLine.shp inside it (produced by Step 1) before you
+run this for that segment.
+
+TIMING NOTE: this is by far the slowest step in the whole pipeline - expect
+this to take hours per segment depending on cloud cover and date range.
+Windows power settings matter here: set Sleep and Screen to "Never" while
+plugged in before starting a long run, or an interrupted download can leave
+a corrupted, partially-written image file that later gets silently treated
+as already-downloaded.
+
+Run with: (coastguard) $ python VedgeSat_Driver_LEKKI.py
+"""
+
+#%% Imports and Initialisation
+
+import os
+import glob
+import pickle
+import warnings
+warnings.filterwarnings("ignore")
+import matplotlib
+# Agg is a non-interactive, headless backend - it renders straight to file
+# with no GUI event loop. Qt5Agg only earns its overhead when a human is
+# actually watching detections live (check_detection / adjust_detection
+# below are both False, so nothing is ever shown on screen), so this
+# switch costs nothing functionally and meaningfully speeds up processing
+# across the hundreds of images each segment involves.
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from datetime import datetime
+from Toolshed import Download, Toolbox, VegetationLine, Plotting, PlottingSeaborn, Transects
+import ee
+import geopandas as gpd
+
+ee.Initialize()
+ee.Authenticate()  # only needed the first time after installation
+
+
+#%% EDIT ME: Requirements - change 'sitename' for each of your 11 segments
+
+sitename = 'LEKKI01'    # <-- EDIT: LEKKI01 through LEKKI11, one run each
+
+dates = ['2013-01-01', '2025-12-31']
+
+# L5: 1984-2013; L7: 1999-2017 (SLC error from 2003); L8: 2013-present;
+# S2: 2014-present; L9: 2021-present
+sat_list = ['L8', 'S2']
+
+cloud_thresh = 0.5   # threshold on MAXIMUM cloud cover - LOWER = stricter/fewer
+                      # images pass, not higher. Don't raise this expecting a
+                      # speed-up; it doesn't touch the download step at all,
+                      # only which already-downloaded images get processed.
+
+wetdry = True         # also extract the waterline, not just the vegetation edge -
+                       # this is what produces the SEPARATE
+                       # {sitename}_transect_water_intersects.pkl file that
+                       # Step 5 (waterline_change_stats.py) needs later.
+
+# Must exactly match the filename Step 1 (split_refline_into_segments.py)
+# actually wrote - a mismatch here was a real, previously-caught bug.
+referenceLineShp = 'Lagos_RefLine.shp'
+max_dist_ref = 150   # metres either side of the reference line to search for edges
+
+
+#%% Set Up Site Directory
+
+filepath = Toolbox.CreateFileStructure(sitename, sat_list)
+print('FILEPATH:', filepath)
+
+referenceLinePath = os.path.join(filepath, 'referenceLines', referenceLineShp)
+print('REFLINE PATH:', referenceLinePath)
+referenceLineDF = gpd.read_file(referenceLinePath)
+polygon, point, lonmin, lonmax, latmin, latmax = Toolbox.AOIfromLine(referenceLinePath, max_dist_ref, sitename)
+polygon = Toolbox.smallest_rectangle(polygon)
+
+
+#%% Compile Input Settings for Imagery
+
+daterange = 'no' if len(dates) > 2 else 'yes'
+years = list(Toolbox.daterange(datetime.strptime(dates[0], '%Y-%m-%d'), datetime.strptime(dates[-1], '%Y-%m-%d')))
+inputs = {'polygon': polygon, 'dates': dates, 'daterange': daterange,
+          'sat_list': sat_list, 'sitename': sitename, 'filepath': filepath}
+
+
+#%% Image Retrieval and Download
+
+inputs = Download.check_images_available(inputs)
+Sat = Download.RetrieveImages(inputs, SLC=False)   # SLC=False excludes Landsat 7 scan-line-affected images
+metadata = Download.CollectMetadata(inputs, Sat)
+
+
+#%% Vegetation Edge Settings
+
+LinesPath = 'Data/' + sitename + '/lines'
+if os.path.isdir(LinesPath) is False:
+    os.mkdir(LinesPath)
+
+projection_epsg, _ = Toolbox.FindUTM(polygon[0][0][1], polygon[0][0][0])
+
+settings = {
+    'cloud_thresh': cloud_thresh,
+    'output_epsg': projection_epsg,
+    'wetdry': wetdry,
+    'check_detection': False,
+    'adjust_detection': False,
+    'save_figure': True,        # per-image QA figure - useful for the outlier-
+                                 # confirmation check in Step 4, keep True unless
+                                 # you're confident you won't need to spot-check
+    'min_beach_area': 200,
+    'buffer_size': 250,
+    'min_length_sl': 500,
+    'cloud_mask_issue': False,
+    'inputs': inputs,
+    'projection_epsg': projection_epsg,
+    'year_list': years,
+}
+
+
+#%% Vegetation Edge Reference Line Load-In
+
+referenceLine, ref_epsg = Toolbox.ProcessRefline(referenceLinePath, settings)
+settings['reference_shoreline'] = referenceLine
+settings['ref_epsg'] = ref_epsg
+settings['max_dist_ref'] = max_dist_ref
+settings['reference_coreg_im'] = None
+
+
+#%% Vegetation Line Extraction
+
+output, output_latlon, output_proj = VegetationLine.extract_veglines(metadata, settings, polygon, dates)
+
+
+#%% Remove Duplicate Lines
+# Same-satellite, same-date duplicates: keep only the longest detected line.
+# This is a DIFFERENT, earlier-stage check than the transect-distance-level
+# duplicate resolution done later in the pipeline (Step 3/merge) - both are
+# needed, this one doesn't replace that one.
+
+output = Toolbox.RemoveDuplicates(output)
+
+
+#%% Save Veglines and Waterlines as Local Shapefiles
+
+Toolbox.SaveConvShapefiles(output, LinesPath, sitename, settings['output_epsg'])
+if settings['wetdry'] == True:
+    Toolbox.SaveConvShapefiles_Water(output, LinesPath, sitename, settings['output_epsg'])
+
+print(f"\nDone with {sitename}. Repeat this whole script for the next segment.")
